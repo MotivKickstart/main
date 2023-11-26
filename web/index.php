@@ -13,7 +13,7 @@
 <body>
 
     <header>
-        <div style="display: none;">
+        <div style="display: block;">
             <?php require_once('conn.php') ?>
         </div>
         <h1>Dashboard</h1>

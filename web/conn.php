@@ -1,9 +1,9 @@
 <?
 
 $dataArray = array();
-$database = "mydb";
-$user = "myuser";
-$password = "password";
+$database = "motivData";
+$user = "root";
+$password = "";
 $host = "mysql";
 
 $conn = new PDO("mysql:host={$host};dbname={$database};charset=utf8", $user, $password);
