@@ -1,0 +1,10 @@
+@font-face {
+    font-family: comfortaa;
+    src: url(/gfx/fonts/Comfortaa-Regular.ttf);
+}
+
+@font-face {
+    font-family: comfortaa;
+    src: url(/gfx/fonts/Comfortaa-Bold.ttf);
+    font-weight: bold;
+}
