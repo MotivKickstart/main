@@ -21,8 +21,9 @@
     </nav>
     <?php if (isset($_SESSION['loggedin'])) {
         echo "Welcome back " . $_SESSION['name'] . "<br>";
+        echo "<a href=\"logout.php\">Logout</a>";
     } ?>
-    <a href="logout.php">Logout</a>
+    
     <div id="login">
         <h3>Login</h3>
         <?php if (isset($_SESSION['error'])) {
