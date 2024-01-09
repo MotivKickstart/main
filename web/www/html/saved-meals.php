@@ -8,13 +8,24 @@
   <link rel="stylesheet" href="/css/main.css">
 </head>
 <body>
-    <nav>
-        <ul>
-            <li><a href="saved-meals.php">Saved Meails</a></li>
+    <div class="navbar">
+        <div class="logo">
+            <img src="/gfx/logo.svg" alt="Logo">
+        </div>
+        <div class="menu-icon" onclick="toggleMenu()">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+        <ul class="nav-list">
+            <li><a href="saved-meals.php">Saved Meals</a></li>
             <li><a href="index.php">Ingredients</a></li>
             <li><a href="recipes.php">Recipes</a></li>
+            <li><a href="Dispenser.php">Dispenser</a></li>
+            <li><a href="About.php">About</a></li>
+            <li><a href="Account.php">Account</a></li>
         </ul>
-    </nav>
+    </div>
     <div id="saved-meals-container">
         <h2>Saved Meals</h2>
         <table>
@@ -35,5 +46,6 @@
         <button class="button button--primary" onclick="clearLocalStorage()">Clear Local Storage</button> <!-- Added button to trigger clearLocalStorage -->
     </div>
     <script src="scriptSavedMeals.js"></script>
+    <script src="nav.js"></script>
 </body>
 </html>

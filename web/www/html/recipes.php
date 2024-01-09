@@ -3,17 +3,29 @@
 <html>
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
   <title>My Recipes</title>
   <link rel="stylesheet" href="/css/main.css">
 </head>
 <body>
-  <nav>
-    <ul>
-        <li><a href="saved-meals.php">Saved Meails</a></li>
-        <li><a href="index.php">Ingredients</a></li>
-        <li><a href="recipes.php">Recipes</a></li>
-    </ul>
-  </nav>
+  <div class="navbar">
+      <div class="logo">
+          <img src="/gfx/logo.svg" alt="Logo">
+      </div>
+      <div class="menu-icon" onclick="toggleMenu()">
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+      </div>
+      <ul class="nav-list">
+          <li><a href="saved-meals.php">Saved Meals</a></li>
+          <li><a href="index.php">Ingredients</a></li>
+          <li><a href="recipes.php">Recipes</a></li>
+          <li><a href="Dispenser.php">Dispenser</a></li>
+          <li><a href="About.php">About</a></li>
+          <li><a href="Account.php">Account</a></li>
+      </ul>
+  </div>
   <div class="search-form">
     <div id="search-container">
       <input type="text" id="search-input" placeholder="Search for recipes">
@@ -50,5 +62,6 @@
   </div>
   <div id="recipe-container"></div>
   <script src="scriptRecipes.js"></script>
+  <script src="nav.js"></script>
 </body>
 </html>
