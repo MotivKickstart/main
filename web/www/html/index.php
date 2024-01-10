@@ -22,23 +22,11 @@
     <?php if (isset($_SESSION['loggedin'])) {
         echo "Welcome back " . $_SESSION['name'] . "<br>";
         echo "<a href=\"logout.php\">Logout</a>";
+    } else{
+        echo "<a href=\"loginForm.php\">login</a>";
+        echo "<a href=\"registerForm.php\">register</a>";
     } ?>
     
-    <div id="login">
-        <h3>Login</h3>
-        <?php if (isset($_SESSION['error'])) {
-            echo $_SESSION['error'];
-            unset($_SESSION['error']);
-        } ?>
-        <form method="post" action="login.php" name="login">
-            <label>Username</label>
-            <input type="text" name="username" autocomplete="off" required />
-            <label>Password</label>
-            <input type="password" name="password" autocomplete="off" required />
-            <input type="submit" class="button" name="loginSubmit" value="Login">
-        </form>
-    </div>
-    <a href="register.php">register</a>
     <div class="form">
         <label for="recipe">Enter Food Items:</label>
         <textarea id="recipe" placeholder="Enter your food items, each item on a new line"></textarea>
