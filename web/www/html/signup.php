@@ -33,7 +33,7 @@ if (!empty($errors)) {
 }
 
 if (isset($_SESSION['error'])) {
-    header('Location: register.php');
+    header('Location: registerForm.php');
     exit;
 }
 
@@ -47,5 +47,5 @@ $sql = "INSERT INTO user (role_id, username, pass, phone, email) VALUES (?, ?, ?
 $stmt = $conn->prepare($sql);
 $stmt->execute([$id, $user, $pass, $phone, $email]);
 
-header('Location: register.php');
+header('Location: registerForm.php');
 exit;
