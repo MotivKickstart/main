@@ -14,7 +14,24 @@ if (isset($_SESSION['loggedin'])) {
 </head>
 
 <body>
-    <a href="index.php">Home</a>
+    <div class="navbar">
+        <div class="logo">
+            <img src="/gfx/logo.svg" alt="Logo">
+        </div>
+        <div class="menu-icon" onclick="toggleMenu()">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+        <ul class="nav-list">
+            <li><a href="saved-meals.php">Saved Meals</a></li>
+            <li><a href="index.php">Ingredients</a></li>
+            <li><a href="recipes.php">Recipes</a></li>
+            <li><a href="Dispenser.php">Dispenser</a></li>
+            <li><a href="About.php">About</a></li>
+            <li><a href="Account.php">Account</a></li>
+        </ul>
+    </div>
     <div id="register">
         <h3>Register</h3>
         <?php
@@ -34,6 +51,7 @@ if (isset($_SESSION['loggedin'])) {
             <input type="submit" class="button" name="registerSubmit" value="Register">
         </form>
     </div>
+    <script src="nav.js"></script>
 </body>
 
 </html>
