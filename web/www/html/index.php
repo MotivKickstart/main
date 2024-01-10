@@ -4,6 +4,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
     <title>Motiv</title>
     <link rel="stylesheet" href="/css/main.css">
 </head>
@@ -12,13 +13,24 @@
     <div style="display: block;">
         <?php require_once('conn.php')?>
     </div>
-    <nav>
-        <ul>
+    <div class="navbar">
+        <div class="logo">
+            <img src="/gfx/logo.svg" alt="Logo">
+        </div>
+        <div class="menu-icon" onclick="toggleMenu()">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+        <ul class="nav-list">
             <li><a href="saved-meals.php">Saved Meals</a></li>
             <li><a href="index.php">Ingredients</a></li>
             <li><a href="recipes.php">Recipes</a></li>
+            <li><a href="Dispenser.php">Dispenser</a></li>
+            <li><a href="About.php">About</a></li>
+            <li><a href="Account.php">Account</a></li>
         </ul>
-    </nav>
+    </div>
     <?php if (isset($_SESSION['loggedin'])) {
         echo "Welcome back " . $_SESSION['name'] . "<br>";
         echo "<a href=\"logout.php\">Logout</a>";
@@ -63,6 +75,7 @@
         <button class="button button--primary" onclick="saveMeal()">Save meal +</button>
     </div>
     <script src="main.js"></script>
+    <script src="nav.js"></script>
 </body>
 
 </html>
