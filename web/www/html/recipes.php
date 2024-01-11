@@ -61,7 +61,7 @@
     </div>
   </div>
   <div id="recipe-container"></div>
-  <script src="scriptRecipes.js"></script>
-  <script src="nav.js"></script>
+  <script src="scripts/scriptRecipes.js"></script>
+  <script src="scripts/nav.js"></script>
 </body>
 </html>

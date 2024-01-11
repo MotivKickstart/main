@@ -45,7 +45,7 @@
         </table>
         <button class="button button--primary" onclick="clearLocalStorage()">Clear Local Storage</button> <!-- Added button to trigger clearLocalStorage -->
     </div>
-    <script src="scriptSavedMeals.js"></script>
-    <script src="nav.js"></script>
+    <script src="scripts/scriptSavedMeals.js"></script>
+    <script src="scripts/nav.js"></script>
 </body>
 </html>

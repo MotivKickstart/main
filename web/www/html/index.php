@@ -11,7 +11,7 @@
 
 <body>
     <div style="display: block;">
-        <?php require_once('conn.php')?>
+        <?php require_once('php/conn.php')?>
     </div>
     <div class="navbar">
         <div class="logo">
@@ -33,7 +33,7 @@
     </div>
     <?php if (isset($_SESSION['loggedin'])) {
         echo "Welcome back " . $_SESSION['name'] . "<br>";
-        echo "<a href=\"logout.php\">Logout</a>";
+        echo "<a href=\"php/logout.php\">Logout</a>";
     } else{
         echo "<a href=\"loginForm.php\">login</a>";
         echo "<a href=\"registerForm.php\">register</a>";
@@ -74,8 +74,8 @@
         </table>
         <button class="button button--primary" onclick="saveMeal()">Save meal +</button>
     </div>
-    <script src="main.js"></script>
-    <script src="nav.js"></script>
+    <script src="scripts/main.js"></script>
+    <script src="scripts/nav.js"></script>
 </body>
 
 </html>

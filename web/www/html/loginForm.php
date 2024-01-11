@@ -11,7 +11,7 @@
 
 <body>
     <div style="display: block;">
-        <?php require_once('conn.php') ?>
+        <?php require_once('php/conn.php') ?>
     </div>
 
     <a href="index.php">Home</a>
@@ -21,7 +21,7 @@
             echo $_SESSION['error'];
             unset($_SESSION['error']);
         } ?>
-        <form method="post" action="login.php" name="login">
+        <form method="post" action="php/login.php" name="login">
             <label>Username</label>
             <input type="text" name="username" autocomplete="off" required />
             <label>Password</label>

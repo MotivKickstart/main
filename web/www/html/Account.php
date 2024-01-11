@@ -26,6 +26,6 @@
         </ul>
     </div>
 
-    <script src="nav.js"></script>
+    <script src="scripts/nav.js"></script>
 </body>
 </html>

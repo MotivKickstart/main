@@ -1,6 +1,7 @@
 <?php
 session_start();
 if (isset($_SESSION['loggedin'])) {
+    echo "<p>Hallo</p>";
     header('Location: index.php');
     exit;
 } ?>
@@ -39,7 +40,7 @@ if (isset($_SESSION['loggedin'])) {
             echo $_SESSION['error'];
             unset($_SESSION['error']);
         } ?>
-        <form method="post" action="signup.php" name="register">
+        <form method="post" action="php/signup.php" name="register">
             <label>Username</label>
             <input type="text" name="username" autocomplete="off" required />
             <label>Password</label>
@@ -51,7 +52,7 @@ if (isset($_SESSION['loggedin'])) {
             <input type="submit" class="button" name="registerSubmit" value="Register">
         </form>
     </div>
-    <script src="nav.js"></script>
+    <script src="scripts/nav.js"></script>
 </body>
 
 </html>

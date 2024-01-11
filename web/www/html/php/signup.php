@@ -33,7 +33,10 @@ if (!empty($errors)) {
 }
 
 if (isset($_SESSION['error'])) {
-    header('Location: registerForm.php');
+    header('Location: phpregisterForm.php');
+    exit;
+} else{
+    header('Location: index.php');
     exit;
 }
 
