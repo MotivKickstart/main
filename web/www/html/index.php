@@ -28,16 +28,15 @@
             <li><a href="recipes.php">Recipes</a></li>
             <li><a href="Dispenser.php">Dispenser</a></li>
             <li><a href="About.php">About</a></li>
-            <li><a href="Account.php">Account</a></li>
+            <?php if (isset($_SESSION['loggedin'])) { ?>
+                <!-- // echo "Welcome back " . $_SESSION['name'] . "<br>"; -->
+                <li><a href="Account.php">Account</a></li>
+                <li class="nav-list__login"><a href="logout.php">Logout</a></li>
+            <?php } else{ ?>
+                <li class="nav-list__login"><a href="loginForm.php">Login</a></li>
+            <?php } ?>
         </ul>
     </div>
-    <?php if (isset($_SESSION['loggedin'])) {
-        echo "Welcome back " . $_SESSION['name'] . "<br>";
-        echo "<a href=\"logout.php\">Logout</a>";
-    } else{
-        echo "<a href=\"loginForm.php\">login</a>";
-        echo "<a href=\"registerForm.php\">register</a>";
-    } ?>
     
     <div class="form">
         <label for="recipe">Enter Food Items:</label>

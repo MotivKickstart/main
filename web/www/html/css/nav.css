@@ -69,4 +69,8 @@
         text-align: center;
         padding: 10px;
     }
+
+    .nav-list li.nav-list__login {
+        margin: 18px 0;
+    }
 }

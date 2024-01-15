@@ -14,7 +14,30 @@
         <?php require_once('conn.php') ?>
     </div>
 
-    <a href="index.php">Home</a>
+    <div class="navbar">
+        <div class="logo">
+            <img src="/gfx/logo.svg" alt="Logo">
+        </div>
+        <div class="menu-icon" onclick="toggleMenu()">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+        <ul class="nav-list">
+            <li><a href="saved-meals.php">Saved Meals</a></li>
+            <li><a href="index.php">Ingredients</a></li>
+            <li><a href="recipes.php">Recipes</a></li>
+            <li><a href="Dispenser.php">Dispenser</a></li>
+            <li><a href="About.php">About</a></li>
+            <?php if (isset($_SESSION['loggedin'])) { ?>
+                <!-- // echo "Welcome back " . $_SESSION['name'] . "<br>"; -->
+                <li><a href="Account.php">Account</a></li>
+                <li class="nav-list__login"><a href="logout.php">Logout</a></li>
+            <?php } else{ ?>
+                <li class="nav-list__login"><a href="loginForm.php">Login</a></li>
+            <?php } ?>
+        </ul>
+    </div>
     <div id="login">
         <h3>Login</h3>
         <?php if (isset($_SESSION['error'])) {
@@ -28,6 +51,7 @@
             <input type="password" name="password" autocomplete="off" required />
             <input type="submit" class="button" name="loginSubmit" value="Login">
         </form>
+        <a href="registerForm.php">Register</a>
     </div>
 
 </body>
