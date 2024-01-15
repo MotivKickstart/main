@@ -40,11 +40,19 @@
         </ul>
     </div>
     
-    <div class="container"> 
+    <div class="container dashboard"> 
         <h1 class="title title-l title-center">Dashboard</h1>
         <a class="button button--primary" href="Dispenser.php">Dispenser</a>
         <a class="button button--primary" href="">Scale</a>
-        <a class="button button--primary" href="recepies.php">Recipes</a>
+        <a class="button button--primary" href="recipes.php">Recipes</a>
+
+        <h2 class="title title-m">Progress</h2>
+        <p>Weight lost: 5kg</p>
+
+        <h2 class="title title-m">Overview today</h2>
+        <p>Calories consumed: 2000kcal</p>
+
+        <a class="button button--primary" href="About.php">About us</a>
     </div>
     <script src="main.js"></script>
     <script src="nav.js"></script>

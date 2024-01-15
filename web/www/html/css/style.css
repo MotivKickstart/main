@@ -11,6 +11,10 @@ body {
   background-color: #FFFFFD;
 }
 
+p {
+  font-size: 16px;
+}
+
 .form,
 #result-container,
 #saved-meals-container {
