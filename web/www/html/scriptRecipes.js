@@ -118,6 +118,8 @@ searchButton.addEventListener('click', () => {
         .then((recipes) => {
             console.log('Recipes:', recipes);
             displayRecipes(recipes);
+            const recipeContainer = document.getElementById('recipe-container');
+            recipeContainer.scrollIntoView({ behavior: 'smooth' });
         })
         .catch((error) => {
             console.error('Error:', error);

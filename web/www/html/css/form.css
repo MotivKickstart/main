@@ -20,3 +20,18 @@ label {
     font-weight: 600px;
     font-size: 20px;
 }
+
+select {
+    border: 0;
+    border-radius: 5px;
+    width: 100%;
+    background: rgba(217, 217, 217, 0.34);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.15);
+    font-size: 20px;
+    width: 100%;
+    padding: 18px 15px;
+  }
+  
+  select:hover {
+    border-color: #aaa;
+  }
