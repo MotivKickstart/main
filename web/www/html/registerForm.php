@@ -39,23 +39,31 @@ if (isset($_SESSION['loggedin'])) {
             <?php } ?>
         </ul>
     </div>
-    <div id="register">
-        <h3>Register</h3>
+    <div class="container">
+        <h1 class="title title-l title-center">Register</h1>
         <?php
         if (isset($_SESSION['error'])) {
             echo $_SESSION['error'];
             unset($_SESSION['error']);
         } ?>
         <form method="post" action="signup.php" name="register">
-            <label>Username</label>
-            <input type="text" name="username" autocomplete="off" required />
-            <label>Password</label>
-            <input type="password" name="password" autocomplete="off" required />
-            <label>Phone number</label>
-            <input type="text" name="phone" autocomplete="off" required />
-            <label>Email</label>
-            <input type="email" name="email" autocomplete="off" required />
-            <input type="submit" class="button" name="registerSubmit" value="Register">
+            <div>
+                <label>Username</label>
+                <input type="text" name="username" autocomplete="off" required />
+            </div>
+            <div>
+                <label>Password</label>
+                <input type="password" name="password" autocomplete="off" required />
+            </div>
+            <div>    
+                <label>Phone number</label>
+                <input type="text" name="phone" autocomplete="off" required />
+            </div>
+            <div>
+                <label>Email</label>
+                <input type="email" name="email" autocomplete="off" required />
+            </div>
+            <input type="submit" class="button button--primary" name="registerSubmit" value="Register">
         </form>
     </div>
     <script src="nav.js"></script>

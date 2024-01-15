@@ -38,22 +38,27 @@
             <?php } ?>
         </ul>
     </div>
-    <div id="login">
-        <h3>Login</h3>
+    <div class="container">
+        <h1 class="title title-l title-center">Login</h1>
         <?php if (isset($_SESSION['error'])) {
             echo $_SESSION['error'];
             unset($_SESSION['error']);
         } ?>
         <form method="post" action="login.php" name="login">
-            <label>Username</label>
-            <input type="text" name="username" autocomplete="off" required />
-            <label>Password</label>
-            <input type="password" name="password" autocomplete="off" required />
-            <input type="submit" class="button" name="loginSubmit" value="Login">
+            <div>
+                <label>Username</label>
+                <input type="text" name="username" autocomplete="off" required />
+            </div>
+            <div>
+                <label>Password</label>
+                <input type="password" name="password" autocomplete="off" required />
+            </div>
+            <input type="submit" class="button button--primary" name="loginSubmit" value="Login">
         </form>
-        <a href="registerForm.php">Register</a>
+        <h2 class="title title-m">Don't have an account?</h2>
+        <a class="button button--primary" href="registerForm.php">Register</a>
     </div>
-
+    <script src="nav.js"></script>
 </body>
 
 </html>
