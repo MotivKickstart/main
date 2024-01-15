@@ -16,7 +16,9 @@
 
     <div class="navbar">
         <div class="logo">
-            <img src="/gfx/logo.svg" alt="Logo">
+            <a href="index.php">
+                <img src="/gfx/logo.svg" alt="Logo">
+            </a>
         </div>
         <div class="menu-icon" onclick="toggleMenu()">
             <div class="bar"></div>
@@ -25,7 +27,7 @@
         </div>
         <ul class="nav-list">
             <li><a href="saved-meals.php">Saved Meals</a></li>
-            <li><a href="index.php">Ingredients</a></li>
+            <li><a href="ingredients.php">Ingredients</a></li>
             <li><a href="recipes.php">Recipes</a></li>
             <li><a href="Dispenser.php">Dispenser</a></li>
             <li><a href="About.php">About</a></li>
