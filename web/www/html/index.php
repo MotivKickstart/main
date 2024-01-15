@@ -15,7 +15,9 @@
     </div>
     <div class="navbar">
         <div class="logo">
-            <img src="/gfx/logo.svg" alt="Logo">
+            <a href="index.php">
+                <img src="/gfx/logo.svg" alt="Logo">
+            </a>
         </div>
         <div class="menu-icon" onclick="toggleMenu()">
             <div class="bar"></div>
@@ -24,7 +26,7 @@
         </div>
         <ul class="nav-list">
             <li><a href="saved-meals.php">Saved Meals</a></li>
-            <li><a href="index.php">Ingredients</a></li>
+            <li><a href="ingredients.php">Ingredients</a></li>
             <li><a href="recipes.php">Recipes</a></li>
             <li><a href="Dispenser.php">Dispenser</a></li>
             <li><a href="About.php">About</a></li>
@@ -38,40 +40,11 @@
         </ul>
     </div>
     
-    <div class="form">
-        <label for="recipe">Enter Food Items:</label>
-        <textarea id="recipe" placeholder="Enter your food items, each item on a new line"></textarea>
-        <button class="button button--primary" onclick="analyzeNutrition()">Analyze Nutrition</button>
-    </div>
-    <div id="result-container">
-        <!-- Results will be displayed here dynamically -->
-        <table>
-            <thead>
-                <tr>
-                    <th>Ingredient</th>
-                    <th>Calories (kcal)</th>
-                    <th>Fat (g)</th>
-                    <th>Protein (g)</th>
-                    <th>Weight (g)</th>
-                </tr>
-            </thead>
-            <tbody id="result-table-body">
-                <!-- Ingredient details will be added here dynamically -->
-            </tbody>
-            <tfoot>
-                <tr id="total-row">
-                    <td>Total</td>
-                    <td id="total-calories"></td>
-                    <td id="total-fat"></td>
-                    <td id="total-protein"></td>
-                    <td id="total-weight"></td>
-                </tr>
-                <tr id="total-nutrients">
-                    <td colspan="5" id="overview-label"></td>
-                </tr>
-            </tfoot>
-        </table>
-        <button class="button button--primary" onclick="saveMeal()">Save meal +</button>
+    <div class="container"> 
+        <h1 class="title title-l title-center">Dashboard</h1>
+        <a class="button button--primary" href="Dispenser.php">Dispenser</a>
+        <a class="button button--primary" href="">Scale</a>
+        <a class="button button--primary" href="recepies.php">Recipes</a>
     </div>
     <script src="main.js"></script>
     <script src="nav.js"></script>
