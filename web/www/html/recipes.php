@@ -26,11 +26,7 @@
             <li><a href="Dispenser.php">Dispenser</a></li>
             <li><a href="About.php">About</a></li>
             <?php if (isset($_SESSION['loggedin'])) { ?>
-                <!-- // echo "Welcome back " . $_SESSION['name'] . "<br>"; -->
-                <li><a href="Account.php">Account</a></li>
                 <li class="nav-list__login"><a href="logout.php">Logout</a></li>
-            <?php } else{ ?>
-                <li class="nav-list__login"><a href="loginForm.php">Login</a></li>
             <?php } ?>
         </ul>
     </div>

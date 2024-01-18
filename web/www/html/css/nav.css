@@ -11,9 +11,20 @@
     margin-bottom: -10px;
 }
 
+.menu-icon-holder {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+}
+
 .menu-icon {
     cursor: pointer;
     display: none;
+}
+
+.menu-icon--user {
+    height: 33px;
 }
 
 .bar {
