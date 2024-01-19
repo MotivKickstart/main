@@ -11,68 +11,60 @@
 
 <body>
     <div style="display: block;">
-        <?php require_once('php/conn.php')?>
+        <?php require_once('php/conn.php') ?>
     </div>
     <div class="navbar">
         <div class="logo">
-            <img src="/gfx/logo.svg" alt="Logo">
+            <a href="index.php">
+                <img src="/gfx/logo.svg" alt="Logo">
+            </a>
         </div>
-        <div class="menu-icon" onclick="toggleMenu()">
-            <div class="bar"></div>
-            <div class="bar"></div>
-            <div class="bar"></div>
+
+        <div class="menu-icon-holder">
+            <?php if (isset($_SESSION['loggedin'])) { ?>
+                <a class="menu-icon menu-icon--user" href="Account.php">
+                <?php } else { ?>
+                    <a class="menu-icon menu-icon--user" href="loginForm.php">
+                    <?php } ?>
+                    <img src="/gfx/user.svg" alt="User">
+                </a>
+
+                <div class="menu-icon" onclick="toggleMenu()">
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                </div>
         </div>
+
         <ul class="nav-list">
             <li><a href="saved-meals.php">Saved Meals</a></li>
-            <li><a href="index.php">Ingredients</a></li>
+            <li><a href="ingredients.php">Ingredients</a></li>
             <li><a href="recipes.php">Recipes</a></li>
             <li><a href="Dispenser.php">Dispenser</a></li>
             <li><a href="About.php">About</a></li>
-            <li><a href="Account.php">Account</a></li>
+            <?php if (isset($_SESSION['loggedin'])) {
+                echo "Welcome back " . $_SESSION['name'] . "<br>";
+                echo "<a href=\"php/logout.php\">Logout</a>";
+            } else {
+                echo "<a href=\"loginForm.php\">login</a>";
+                echo "<a href=\"registerForm.php\">register</a>";
+            } ?>
         </ul>
     </div>
-    <?php if (isset($_SESSION['loggedin'])) {
-        echo "Welcome back " . $_SESSION['name'] . "<br>";
-        echo "<a href=\"php/logout.php\">Logout</a>";
-    } else{
-        echo "<a href=\"loginForm.php\">login</a>";
-        echo "<a href=\"registerForm.php\">register</a>";
-    } ?>
-    
-    <div class="form">
-        <label for="recipe">Enter Food Items:</label>
-        <textarea id="recipe" placeholder="Enter your food items, each item on a new line"></textarea>
-        <button class="button button--primary" onclick="analyzeNutrition()">Analyze Nutrition</button>
-    </div>
-    <div id="result-container">
-        <!-- Results will be displayed here dynamically -->
-        <table>
-            <thead>
-                <tr>
-                    <th>Ingredient</th>
-                    <th>Calories (kcal)</th>
-                    <th>Fat (g)</th>
-                    <th>Protein (g)</th>
-                    <th>Weight (g)</th>
-                </tr>
-            </thead>
-            <tbody id="result-table-body">
-                <!-- Ingredient details will be added here dynamically -->
-            </tbody>
-            <tfoot>
-                <tr id="total-row">
-                    <td>Total</td>
-                    <td id="total-calories"></td>
-                    <td id="total-fat"></td>
-                    <td id="total-protein"></td>
-                    <td id="total-weight"></td>
-                </tr>
-                <tr id="total-nutrients">
-                    <td colspan="5" id="overview-label"></td>
-                </tr>
-            </tfoot>
-        </table>
-        <button class="button button--primary" onclick="saveMeal()">Save meal +</button>
+
+    <div class="container dashboard">
+        <h1 class="title title-l title-center">Dashboard</h1>
+        <a class="button button--primary" href="Dispenser.php">Dispenser</a>
+        <a class="button button--primary" href="">Scale</a>
+        <a class="button button--primary" href="recipes.php">Recipes</a>
+
+        <h2 class="title title-m">Progress</h2>
+        <p>Weight lost: 5kg</p>
+
+        <h2 class="title title-m">Overview today</h2>
+        <p>Calories consumed: 2000kcal</p>
+
+        <a class="button button--primary" href="About.php">About us</a>
     </div>
     <script src="scripts/main.js"></script>
     <script src="scripts/nav.js"></script>

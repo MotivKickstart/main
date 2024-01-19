@@ -1,0 +1,21 @@
+#filter-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 27px;
+}
+
+#filter-container div {
+    width: 100%;
+}	
+
+#recipe-container {
+    display: flex;
+    flex-direction: column;
+    gap: 27px;
+}
+
+  
+
+
+  
