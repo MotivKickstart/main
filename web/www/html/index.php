@@ -59,13 +59,9 @@
             <li><a href="recipes.php">Recipes</a></li>
             <li><a href="Dispenser.php">Dispenser</a></li>
             <li><a href="About.php">About</a></li>
-            <?php if (isset($_SESSION['loggedin'])) {
-                echo "Welcome back " . $_SESSION['name'] . "<br>";
-                echo "<a href=\"php/logout.php\">Logout</a>";
-            } else {
-                echo "<a href=\"loginForm.php\">login</a>";
-                echo "<a href=\"registerForm.php\">register</a>";
-            } ?>
+            <?php if (isset($_SESSION['loggedin'])) {?>
+                <li><a href="php/logout.php">Logout</a></li>
+            <?php } ?>
         </ul>
     </div>
 
