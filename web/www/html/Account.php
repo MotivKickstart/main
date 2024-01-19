@@ -60,6 +60,6 @@
     <div class="container">
         <a class="button button--primary" href="logout.php">Logout</a>
     </div>
-    <script src="nav.js"></script>
+    <script src="php/nav.js"></script>
 </body>
 </html>

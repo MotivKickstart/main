@@ -23,6 +23,7 @@
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="/gfx/favicon/ms-icon-144x144.png">
     <meta name="theme-color" content="#8FC0A9">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
     <div class="navbar">
@@ -76,7 +77,7 @@
         </table>
         <button class="button button--primary" onclick="clearLocalStorage()">Clear Local Storage</button> <!-- Added button to trigger clearLocalStorage -->
     </div>
-    <script src="scriptSavedMeals.js"></script>
-    <script src="nav.js"></script>
+    <script src="scripts/scriptSavedMeals.js"></script>
+    <script src="scripts/nav.js"></script>
 </body>
 </html>

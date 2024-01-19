@@ -77,7 +77,7 @@ function displayRecipes(recipes) {
         saveButton.classList.add('button', 'button--secondary');
         saveButton.textContent = 'Save';
         saveButton.addEventListener('click', () => {
-            saveRecipeToLocalStorage(recipe.recipe);
+            saveRecipeToDatabase(recipe.recipe);
         });
 
         card.appendChild(title);
@@ -103,6 +103,9 @@ function saveRecipeToLocalStorage(recipe) {
         fat: recipe.totalNutrients.FAT.quantity,
         weight: recipe.totalWeight
     };
+
+    console.log(savedRecipeDetails);
+
     // Retrieve existing meals from local storage
     const existingMeals = JSON.parse(localStorage.getItem('meals')) || [];
 
@@ -111,6 +114,33 @@ function saveRecipeToLocalStorage(recipe) {
 
     // Save updated meals in local storage
     localStorage.setItem('meals', JSON.stringify(existingMeals));
+}
+
+function saveRecipeToDatabase(recipe) {
+    const savedRecipeDetails = {
+        ingredients: recipe.ingredients.map(ingredient => ingredient.text),
+        calories: recipe.calories,
+        protein: recipe.totalNutrients.PROCNT.quantity,
+        fat: recipe.totalNutrients.FAT.quantity,
+        weight: recipe.totalWeight
+    };
+
+    // console.log(JSON.stringify(savedRecipeDetails));
+
+    // let recipeData = "{\"ingredients\":", recipe.ingredients.map(ingredient => ingredient.text) ,"}"
+
+    $.ajax({
+        type: 'post',
+        url: 'php/saveMeal.php',
+        data: {
+            payLoad: JSON.stringify(savedRecipeDetails)
+        },
+        success: function (data) {
+            console.log(data);
+            // console.log("success\n");
+        }
+    });
+
 }
 
 // Example usage

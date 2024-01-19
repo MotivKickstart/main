@@ -28,7 +28,7 @@
 
 <body>
     <div style="display: block;">
-        <?php require_once('conn.php')?>
+        <?php require_once('php/conn.php') ?>
     </div>
     <div class="navbar">
         <div class="logo">
@@ -40,32 +40,36 @@
         <div class="menu-icon-holder">
             <?php if (isset($_SESSION['loggedin'])) { ?>
                 <a class="menu-icon menu-icon--user" href="Account.php">
-            <?php } else{ ?>
-                <a class="menu-icon menu-icon--user" href="loginForm.php">
-            <?php } ?>
-                <img src="/gfx/user.svg" alt="User">
-            </a>
+                <?php } else { ?>
+                    <a class="menu-icon menu-icon--user" href="loginForm.php">
+                    <?php } ?>
+                    <img src="/gfx/user.svg" alt="User">
+                </a>
 
-            <div class="menu-icon" onclick="toggleMenu()">
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
-            </div>
+                <div class="menu-icon" onclick="toggleMenu()">
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                </div>
         </div>
-            
+
         <ul class="nav-list">
             <li><a href="saved-meals.php">Saved Meals</a></li>
             <li><a href="ingredients.php">Ingredients</a></li>
             <li><a href="recipes.php">Recipes</a></li>
             <li><a href="Dispenser.php">Dispenser</a></li>
             <li><a href="About.php">About</a></li>
-            <?php if (isset($_SESSION['loggedin'])) { ?>
-                <li class="nav-list__login"><a href="logout.php">Logout</a></li>
-            <?php } ?>
+            <?php if (isset($_SESSION['loggedin'])) {
+                echo "Welcome back " . $_SESSION['name'] . "<br>";
+                echo "<a href=\"php/logout.php\">Logout</a>";
+            } else {
+                echo "<a href=\"loginForm.php\">login</a>";
+                echo "<a href=\"registerForm.php\">register</a>";
+            } ?>
         </ul>
     </div>
-    
-    <div class="container dashboard"> 
+
+    <div class="container dashboard">
         <h1 class="title title-l title-center">Dashboard</h1>
         <a class="button button--primary" href="Dispenser.php">Dispenser</a>
         <a class="button button--primary" href="">Scale</a>
@@ -79,8 +83,8 @@
 
         <a class="button button--primary" href="About.php">About us</a>
     </div>
-    <script src="main.js"></script>
-    <script src="nav.js"></script>
+    <script src="scripts/main.js"></script>
+    <script src="scripts/nav.js"></script>
 </body>
 
 </html>

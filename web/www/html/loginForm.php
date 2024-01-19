@@ -28,7 +28,7 @@
 
 <body>
     <div style="display: block;">
-        <?php require_once('conn.php') ?>
+        <?php require_once('php/conn.php') ?>
     </div>
 
     <div class="navbar">
@@ -69,7 +69,7 @@
             echo $_SESSION['error'];
             unset($_SESSION['error']);
         } ?>
-        <form method="post" action="login.php" name="login">
+        <form method="post" action="php/login.php" name="login">
             <div>
                 <label>Username</label>
                 <input type="text" name="username" autocomplete="off" required />
@@ -83,7 +83,7 @@
         <h2 class="title title-m">Don't have an account?</h2>
         <a class="button button--primary" href="registerForm.php">Register</a>
     </div>
-    <script src="nav.js"></script>
+    <script src="scripts/nav.js"></script>
 </body>
 
 </html>
