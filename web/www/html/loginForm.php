@@ -66,7 +66,7 @@
         <h2 class="title title-m">Don't have an account?</h2>
         <a class="button button--primary" href="registerForm.php">Register</a>
     </div>
-    <script src="nav.js"></script>
+    <script src="scripts/nav.js"></script>
 </body>
 
 </html>
