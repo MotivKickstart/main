@@ -42,21 +42,23 @@ function displayRecipes(recipes) {
         const image = document.createElement('img');
         image.src = recipe.recipe.image;
 
-        const ingredients = document.createElement('ul');
-        recipe.recipe.ingredients.forEach((ingredient) => {
-            const li = document.createElement('li');
-            li.textContent = ingredient.text;
-            ingredients.appendChild(li);
-        });
+        // const ingredients = document.createElement('ul');
+        // recipe.recipe.ingredients.forEach((ingredient) => {
+        //     const li = document.createElement('li');
+        //     li.textContent = ingredient.text;
+        //     ingredients.appendChild(li);
+        // });
 
         const calories = document.createElement('p');
-        calories.textContent = `Calories: ${recipe.recipe.calories.toFixed(2)}`;
+        calories.textContent = `Calories: ${recipe.recipe.calories.toFixed(2)}kcal`;
+        calories.classList.add('label');
 
         const protein = document.createElement('p');
         protein.textContent = `Protein: ${recipe.recipe.totalNutrients.PROCNT.quantity.toFixed(2)} ${recipe.recipe.totalNutrients.PROCNT.unit}`;
+        protein.classList.add('label');
 
-        const fat = document.createElement('p');
-        fat.textContent = `Fat: ${recipe.recipe.totalNutrients.FAT.quantity.toFixed(2)} ${recipe.recipe.totalNutrients.FAT.unit}`;
+        // const fat = document.createElement('p');
+        // fat.textContent = `Fat: ${recipe.recipe.totalNutrients.FAT.quantity.toFixed(2)} ${recipe.recipe.totalNutrients.FAT.unit}`;
 
         //Button container
         const buttonContainer = document.createElement('div');
@@ -75,15 +77,15 @@ function displayRecipes(recipes) {
         saveButton.classList.add('button', 'button--secondary');
         saveButton.textContent = 'Save';
         saveButton.addEventListener('click', () => {
-            saveRecipeToLocalStorage(recipe.recipe);
+            saveRecipeToDatabase(recipe.recipe);
         });
 
         card.appendChild(title);
         card.appendChild(image);
-        card.appendChild(ingredients);
+        // card.appendChild(ingredients);
         card.appendChild(calories);
         card.appendChild(protein);
-        card.appendChild(fat);
+        // card.appendChild(fat);
         buttonContainer.appendChild(recipeButton);
         buttonContainer.appendChild(saveButton);
         card.appendChild(buttonContainer);
@@ -101,6 +103,9 @@ function saveRecipeToLocalStorage(recipe) {
         fat: recipe.totalNutrients.FAT.quantity,
         weight: recipe.totalWeight
     };
+
+    console.log(savedRecipeDetails);
+
     // Retrieve existing meals from local storage
     const existingMeals = JSON.parse(localStorage.getItem('meals')) || [];
 
@@ -111,6 +116,33 @@ function saveRecipeToLocalStorage(recipe) {
     localStorage.setItem('meals', JSON.stringify(existingMeals));
 }
 
+function saveRecipeToDatabase(recipe) {
+    const savedRecipeDetails = {
+        ingredients: recipe.ingredients.map(ingredient => ingredient.text),
+        calories: recipe.calories,
+        protein: recipe.totalNutrients.PROCNT.quantity,
+        fat: recipe.totalNutrients.FAT.quantity,
+        weight: recipe.totalWeight
+    };
+
+    // console.log(JSON.stringify(savedRecipeDetails));
+
+    // let recipeData = "{\"ingredients\":", recipe.ingredients.map(ingredient => ingredient.text) ,"}"
+
+    $.ajax({
+        type: 'post',
+        url: 'php/saveMeal.php',
+        data: {
+            payLoad: JSON.stringify(savedRecipeDetails)
+        },
+        success: function (data) {
+            console.log(data);
+            // console.log("success\n");
+        }
+    });
+
+}
+
 // Example usage
 const searchButton = document.getElementById('search-button');
 searchButton.addEventListener('click', () => {
@@ -118,6 +150,8 @@ searchButton.addEventListener('click', () => {
         .then((recipes) => {
             console.log('Recipes:', recipes);
             displayRecipes(recipes);
+            const recipeContainer = document.getElementById('recipe-container');
+            recipeContainer.scrollIntoView({ behavior: 'smooth' });
         })
         .catch((error) => {
             console.error('Error:', error);
