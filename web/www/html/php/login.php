@@ -31,7 +31,10 @@ if ($stmt = $conn->prepare('SELECT id, pass FROM user WHERE username = ?')) {
     }
 }
 
-if (isset($_SESSION['loggedin']) || isset($_SESSION['error'])) {
-	header('Location: index.php');
+if (isset($_SESSION['loggedin'])) {
+	header('Location: ../index.php');
+	exit;
+} elseif(isset($_SESSION['error'])){
+    header('Location: ../loginForm.php');
 	exit;
 }
