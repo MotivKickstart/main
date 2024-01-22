@@ -51,6 +51,14 @@ if (isset($_SESSION['loggedin'])) {
     <div class="container">
         <h1 class="title title-l title-center">Register</h1>
         <?php
+        $test1 = $_SESSION['status1'];
+        $test2 = $_SESSION['status2'];
+        echo print_r($_SESSION['status1']);
+        echo "<br>";
+        echo print_r($_SESSION['status2']);
+        echo "<script>console.log('$test1');</script>";
+        echo "<script>console.log('$test2');</script>";
+        unset($_SESSION['status']);
         if (isset($_SESSION['error'])) {
             echo $_SESSION['error'];
             unset($_SESSION['error']);

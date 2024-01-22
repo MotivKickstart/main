@@ -1,14 +1,19 @@
 <?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Saved Meals</title>
-  <link rel="stylesheet" href="/css/main.css">
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saved Meals</title>
+    <link rel="stylesheet" href="/css/main.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
+
 <body>
+    <div style="display: block;">
+        <?php require_once('php/conn.php') ?>
+    </div>
     <div class="navbar">
         <div class="logo">
             <a href="index.php">
@@ -18,17 +23,17 @@
         <div class="menu-icon-holder">
             <?php if (isset($_SESSION['loggedin'])) { ?>
                 <a class="menu-icon menu-icon--user" href="Account.php">
-            <?php } else{ ?>
-                <a class="menu-icon menu-icon--user" href="loginForm.php">
-            <?php } ?>
-                <img src="/gfx/user.svg" alt="User">
-            </a>
+                <?php } else { ?>
+                    <a class="menu-icon menu-icon--user" href="loginForm.php">
+                    <?php } ?>
+                    <img src="/gfx/user.svg" alt="User">
+                    </a>
 
-            <div class="menu-icon" onclick="toggleMenu()">
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
-            </div>
+                    <div class="menu-icon" onclick="toggleMenu()">
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                    </div>
         </div>
         <ul class="nav-list">
             <li><a href="saved-meals.php">Saved Meals</a></li>
@@ -45,17 +50,17 @@
         <h2>Saved Meals</h2>
         <table>
             <thead>
-            <tr>
-                <th>Meal Name</th>
-                <th>Ingredients</th>
-                <th>Calories (kcal)</th>
-                <th>Fat (g)</th>
-                <th>Protein (g)</th>
-                <th>Weight (g)</th>
-            </tr>
+                <tr>
+                    <th>Meal Name</th>
+                    <th>Ingredients</th>
+                    <th>Calories (kcal)</th>
+                    <th>Fat (g)</th>
+                    <th>Protein (g)</th>
+                    <th>Weight (g)</th>
+                </tr>
             </thead>
             <tbody id="saved-meals-table-body">
-            <!-- Saved meal details will be added here dynamically -->
+                <!-- Saved meal details will be added here dynamically -->
             </tbody>
         </table>
         <button class="button button--primary" onclick="clearLocalStorage()">Clear Local Storage</button> <!-- Added button to trigger clearLocalStorage -->
@@ -63,4 +68,5 @@
     <script src="scripts/scriptSavedMeals.js"></script>
     <script src="scripts/nav.js"></script>
 </body>
+
 </html>

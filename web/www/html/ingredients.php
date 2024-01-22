@@ -11,7 +11,7 @@
 
 <body>
     <div style="display: block;">
-        <?php require_once('conn.php')?>
+        <?php require_once('php/conn.php')?>
     </div>
     <div class="navbar">
         <div class="logo">
@@ -83,8 +83,8 @@
         </table>
         <button class="button button--primary" onclick="saveMeal()">Save meal +</button>
     </div>
-    <script src="main.js"></script>
-    <script src="nav.js"></script>
+    <script src="scripts/main.js"></script>
+    <script src="scripts/nav.js"></script>
 </body>
 
 </html>
