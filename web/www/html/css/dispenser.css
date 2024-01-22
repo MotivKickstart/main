@@ -1,0 +1,38 @@
+.checkboxContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+
+    margin-top: 18px;
+}
+
+#autoDispense {
+    width: 18px;
+    height: 18px;
+}
+
+.checkboxContainer label {
+    font-size: 20px;
+    margin-bottom: 0;
+}
+
+.alarms {
+    display: none;
+}
+
+.alarmsContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.alarm {
+    font-size: 20px;
+    border-radius: 5px;
+    background: rgba(217, 217, 217, 0.34);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.15);
+    padding: 6px 20px;
+}
