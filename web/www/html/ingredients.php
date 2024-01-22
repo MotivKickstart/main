@@ -60,7 +60,7 @@
             <li><a href="Dispenser.php">Dispenser</a></li>
             <li><a href="About.php">About</a></li>
             <?php if (isset($_SESSION['loggedin'])) { ?>
-                <li class="nav-list__login"><a href="logout.php">Logout</a></li>
+                <li class="nav-list__login"><a href="/php/logout.php">Logout</a></li>
             <?php } ?>
         </ul>
     </div>
