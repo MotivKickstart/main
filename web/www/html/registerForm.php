@@ -11,7 +11,7 @@ if (isset($_SESSION['loggedin'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>register</title>
+    <title>Motiv | Register</title>
     <link rel="stylesheet" href="/css/main.css">
     <link rel="apple-touch-icon" sizes="57x57" href="/gfx/favicon/apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="/gfx/favicon/apple-icon-60x60.png">
@@ -66,7 +66,7 @@ if (isset($_SESSION['loggedin'])) {
         </ul>
     </div>
     <div class="container">
-        <h1 class="title title-l title-center">Register</h1>
+        <h1 class="title title-l title-center">Create account</h1>
         <?php
         $test1 = $_SESSION['status1'];
         $test2 = $_SESSION['status2'];
@@ -89,13 +89,29 @@ if (isset($_SESSION['loggedin'])) {
                 <label>Password</label>
                 <input type="password" name="password" autocomplete="off" required />
             </div>
-            <div>    
+            <!-- <div>    
                 <label>Phone number</label>
                 <input type="text" name="phone" autocomplete="off" required />
-            </div>
+            </div> -->
             <div>
                 <label>Email</label>
                 <input type="email" name="email" autocomplete="off" required />
+            </div>
+            <div>
+                <label>Sport goal</label>
+                <input type="checkbox" id="toggle" class="toggleCheckbox" />
+                <label for="toggle" class='toggleContainer'>
+                <div>Muscle growth</div>   
+                <div>Lose weight</div>
+                </label>
+            </div>
+            <div>
+                <label>How many times do you sport in a week?</label>
+                <input type="number" name="sport" autocomplete="off" required />
+            </div>
+            <div>
+                <label>How many hours do you sport in a week?</label>
+                <input type="number" name="sportHours" autocomplete="off" required />
             </div>
             <input type="submit" class="button button--primary" name="registerSubmit" value="Register">
         </form>

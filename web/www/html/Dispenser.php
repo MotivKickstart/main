@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dispenser</title>
+    <title>Motiv | Dispenser</title>
+    <link rel="stylesheet" href="/css/main.css">
 </head>
 <body>
     <div class="navbar">
@@ -39,7 +40,26 @@
             <?php } ?>
         </ul>
     </div>
-    
+    <div class="container"> 
+        <h1 class="title title-l title-center">Dispenser</h1>
+        <button class="button button--primary" onclick="">Dispense</button>
+        <div class="checkboxContainer">
+            <input type="checkbox" id="autoDispense" name="autoDispense" value="autoDispense">
+            <label for="autoDispense">Auto Dispense</label>
+        </div>
+        <div class="alarms">
+            <h2 class="title title-m">Alarms</h2>
+            <form>
+                <input type="time" id="alarm" name="alarm" value="">
+                <input class="button button--primary" type="submit" value="Add Alarm">
+            </form>
+            <div class="alarmsContainer">
+                <p class="alarm">11:00</p>
+            </div>
+        </div>
+    </div>
+
     <script src="scripts/nav.js"></script>
+    <script src="scripts/dispenser.js"></script>
 </body>
 </html>
