@@ -1,11 +1,13 @@
 #include <Wire.h>
 #include <Adafruit_GFX.h>
 #include <Adafruit_SSD1306.h>
+#include <EEPROM.h>
 #include "HX711.h"
 #include "soc/rtc.h"
 
 #define SCREEN_WIDTH 128 // OLED display width,  in pixels
 #define SCREEN_HEIGHT 64 // OLED display height, in pixels
+#define EEPROM_SIZE 1
 
 // ROTARY ENCODER
 #include <ezButton.h>  // the library to use for SW pin
@@ -19,6 +21,8 @@
 
 const int LOADCELL_DOUT_PIN = 16;
 const int LOADCELL_SCK_PIN = 4;
+
+// const int water_pump = 13;
 
 int counter = 0;
 int direction = DIRECTION_CW;
@@ -34,7 +38,8 @@ int calibrate_option = 0;
 int calibration_counter = 0;
 float calibration_factor = 0;
 long reading = 0;
-int known_weight = 6100;
+int known_weight = 63; //Weight of motiv bottle
+// int known_weight = 100;
 
 // Running variables
 bool running_mode = false;
@@ -53,20 +58,7 @@ HX711 scale;
 ezButton button(SW_PIN);  // create ezButton object that attach to pin 7;
 Adafruit_SSD1306 oled(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, -1);
 
-
-
-void setup() {
-  Serial.begin(9600);
-
-  // initialize OLED display with address 0x3C for 128x64
-  if (!oled.begin(SSD1306_SWITCHCAPVCC, 0x3C)) {
-    Serial.println(F("SSD1306 allocation failed"));
-    while (true);
-  }
-  // rtc_clk_cpu_freq_set(RTC_CPU_FREQ_80M);
-  scale.begin(LOADCELL_DOUT_PIN, LOADCELL_SCK_PIN);
-
-  delay(2000);
+void startup_screen(){
   oled.clearDisplay();
   oled.setTextSize(2);
   oled.setTextColor(WHITE);
@@ -75,11 +67,30 @@ void setup() {
   print_center("Booting...", 45);
   oled.display();
   delay(2000);
-  // configure encoder pins as inputs
+}
+
+void setup() {
+  Serial.begin(9600);
+  // Configure oled
+  if (!oled.begin(SSD1306_SWITCHCAPVCC, 0x3C)) {
+    Serial.println(F("SSD1306 allocation failed"));
+    while (true);
+  }
+  startup_screen();
+  // Configure EEPROM
+  EEPROM.begin(EEPROM_SIZE);
+  // Configure scale
+  scale.begin(LOADCELL_DOUT_PIN, LOADCELL_SCK_PIN);
+  calibration_factor = EEPROM.readFloat(0);
+  Serial.print("calibration_factor ======== ");
+  Serial.println(calibration_factor);
+  scale.set_scale(calibration_factor);
+  scale.tare();
+  // Configure rotary encoder
   pinMode(CLK_PIN, INPUT);
   pinMode(DT_PIN, INPUT);
+  pinMode(12, OUTPUT);
   button.setDebounceTime(10);
-  // read the initial state of the rotary encoder's CLK pin
   prev_CLK_state = digitalRead(CLK_PIN);
 }
 
@@ -89,12 +100,9 @@ void loop() {
       calibrate();
     } else if (running_mode){
       run();
-      // Serial.println(scale.get_units(10), 5);
     } else {
       display_menu();
     }
-  } else {
-    // Serial.println("HX711 not found..");
-  }
-
+    // Serial.println(scale.get_units(1));
+  } else {}
 }
