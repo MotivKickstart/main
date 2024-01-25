@@ -53,13 +53,13 @@
             <li><a href="Dispenser.php">Dispenser</a></li>
             <li><a href="About.php">About</a></li>
             <?php if (isset($_SESSION['loggedin'])) { ?>
-                <li class="nav-list__login"><a href="logout.php">Logout</a></li>
+                <li class="nav-list__login"><a href="/php/logout.php">Logout</a></li>
             <?php } ?>
         </ul>
     </div>
     <div class="container">
-        <a class="button button--primary" href="logout.php">Logout</a>
+        <a class="button button--primary" href="/php/logout.php">Logout</a>
     </div>
-    <script src="php/nav.js"></script>
+    <script src="/script/nav.js"></script>
 </body>
 </html>

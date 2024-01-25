@@ -32,27 +32,27 @@
     <?php require_once('php/conn.php') ?>
   </div>
   <div class="navbar">
-    <div class="logo">
-      <a href="index.php">
-        <img src="/gfx/logo.svg" alt="Logo">
-      </a>
+      <div class="logo">
+          <a href="index.php">
+                <img src="/gfx/logo.svg" alt="Logo">
+            </a>
+      </div>
+      <div class="menu-icon" onclick="toggleMenu()">
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+      </div>
+      <ul class="nav-list">
+            <li><a href="saved-meals.php">Saved Meals</a></li>
+            <li><a href="ingredients.php">Ingredients</a></li>
+            <li><a href="recipes.php">Recipes</a></li>
+            <li><a href="Dispenser.php">Dispenser</a></li>
+            <li><a href="About.php">About</a></li>
+            <?php if (isset($_SESSION['loggedin'])) { ?>
+                <li class="nav-list__login"><a href="/php/logout.php">Logout</a></li>
+            <?php } ?>
+        </ul>
     </div>
-    <div class="menu-icon" onclick="toggleMenu()">
-      <div class="bar"></div>
-      <div class="bar"></div>
-      <div class="bar"></div>
-    </div>
-    <ul class="nav-list">
-      <li><a href="saved-meals.php">Saved Meals</a></li>
-      <li><a href="ingredients.php">Ingredients</a></li>
-      <li><a href="recipes.php">Recipes</a></li>
-      <li><a href="Dispenser.php">Dispenser</a></li>
-      <li><a href="About.php">About</a></li>
-      <?php if (isset($_SESSION['loggedin'])) { ?>
-        <li class="nav-list__login"><a href="logout.php">Logout</a></li>
-      <?php } ?>
-    </ul>
-  </div>
   <div class="container padding">
     <div id="search-container">
       <input type="text" id="search-input" placeholder="Search for recipes">
