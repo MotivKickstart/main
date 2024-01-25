@@ -124,13 +124,10 @@ void run(){
     }
   } else if (running_option == 3){
     if(amount_of_water > 0){
-      digitalWrite(12, HIGH);
-      Serial.println("HIGH");
       dispense("Water", 4, amount_of_water);
     } else {
       running_option++;
     }
-    digitalWrite(12, xCZVOW");
   } else if (running_option == 4){
     oled.clearDisplay();
     oled.setTextSize(1);
@@ -149,7 +146,6 @@ void run(){
     delay(3000);
     running_option = 6;
   } else if (running_option == 6){
-    digitalWrite(13, LOW);
     running_mode = false;
     menu_number = 0;
     running_option = 0;

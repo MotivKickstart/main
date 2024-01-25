@@ -22,7 +22,10 @@
 const int LOADCELL_DOUT_PIN = 16;
 const int LOADCELL_SCK_PIN = 4;
 
-// const int water_pump = 13;
+const int water_pump = 34;
+const int creatine_pump = 35;
+const int protein_pump = 32;
+
 
 int counter = 0;
 int direction = DIRECTION_CW;
@@ -89,9 +92,12 @@ void setup() {
   // Configure rotary encoder
   pinMode(CLK_PIN, INPUT);
   pinMode(DT_PIN, INPUT);
-  pinMode(12, OUTPUT);
   button.setDebounceTime(10);
   prev_CLK_state = digitalRead(CLK_PIN);
+  // Configure relais
+  pinMode(water_pump, OUTPUT);
+  pinMode(creatine_pump, OUTPUT);
+  pinMode(protein_pump, OUTPUT);
 }
 
 void loop() {
