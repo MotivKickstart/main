@@ -47,10 +47,10 @@
             </div>
         </div>
         <ul class="nav-list">
-            <li><a href="saved-meals.php">Saved Meals</a></li>
-            <li><a href="ingredients.php">Ingredients</a></li>
-            <li><a href="recipes.php">Recipes</a></li>
             <li><a href="Dispenser.php">Dispenser</a></li>
+            <li><a href="ingredients.php">Meal tracking</a></li>
+            <li><a href="recipes.php">Recipes</a></li>
+            <li><a href="saved-meals.php">Saved Meals</a></li>
             <li><a href="About.php">About</a></li>
             <?php if (isset($_SESSION['loggedin'])) { ?>
                 <li class="nav-list__login"><a href="/php/logout.php">Logout</a></li>
@@ -75,6 +75,6 @@
         With healthy regards,<br>
         The Movit Team
     </p>
-    <script src="nav.js"></script>
+    <script src="/scripts/nav.js"></script>
 </body>
 </html>
