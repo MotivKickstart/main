@@ -59,21 +59,21 @@ void calibrate(){
   }
 
   if (calibrate_option == 2){
-    text1 = "Put empty bottle";
-    text2 = "on loadcell";
+    text1 = "Remove everything";
+    text2 = "from loadcell";
   }
 
   if (calibrate_option == 3){
-    text1 = "Put bottle with";
-    text2 = "100ml on loadcell";
+    text1 = "Put the motiv";
+    text2 = "bottle on loadcell";
     scale.tare();
     reading = 0;
     calibrate_option++;
   }
 
   if (calibrate_option == 4){
-    text1 = "Put bottle with";
-    text2 = "100ml on loadcell";
+    text1 = "Put the motiv";
+    text2 = "bottle on loadcell";
   }
 
   if (calibrate_option == 5){
@@ -82,6 +82,8 @@ void calibrate(){
     if (reading == 0){
       reading = scale.get_units(10);
       calibration_factor = (reading)/(known_weight);
+      EEPROM.writeFloat(0, calibration_factor);
+      // EEPROM.commit();
       scale.set_scale(calibration_factor);
       Serial.println(reading);
       Serial.println(calibration_factor);

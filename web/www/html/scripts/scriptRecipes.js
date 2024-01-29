@@ -77,7 +77,7 @@ function displayRecipes(recipes) {
         saveButton.classList.add('button', 'button--secondary');
         saveButton.textContent = 'Save';
         saveButton.addEventListener('click', () => {
-            saveRecipeToDatabase(recipe.recipe);
+            saveRecipeToLocalStorage(recipe.recipe);
         });
 
         card.appendChild(title);
@@ -97,11 +97,10 @@ function displayRecipes(recipes) {
 // Function to save recipe to local storage
 function saveRecipeToLocalStorage(recipe) {
     const savedRecipeDetails = {
-        ingredients: recipe.ingredients.map(ingredient => ingredient.text),
-        calories: recipe.calories,
-        protein: recipe.totalNutrients.PROCNT.quantity,
-        fat: recipe.totalNutrients.FAT.quantity,
-        weight: recipe.totalWeight
+        title: recipe.label,
+        calories: recipe.calories.toFixed(2),
+        protein: recipe.totalNutrients.PROCNT.quantity.toFixed(2),
+        image: recipe.image
     };
 
     console.log(savedRecipeDetails);
@@ -144,7 +143,6 @@ function saveRecipeToDatabase(recipe) {
 
 }
 
-// Example usage
 const searchButton = document.getElementById('search-button');
 searchButton.addEventListener('click', () => {
     fetchRecipes()

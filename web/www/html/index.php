@@ -57,10 +57,10 @@
         </div>
 
         <ul class="nav-list">
-            <li><a href="saved-meals.php">Saved Meals</a></li>
-            <li><a href="ingredients.php">Ingredients</a></li>
-            <li><a href="recipes.php">Recipes</a></li>
             <li><a href="Dispenser.php">Dispenser</a></li>
+            <li><a href="ingredients.php">Meal tracking</a></li>
+            <li><a href="recipes.php">Recipes</a></li>
+            <li><a href="saved-meals.php">Saved Meals</a></li>
             <li><a href="About.php">About</a></li>
             <li><a href="loginForm.php">login</a></li> <!-- temp links for testing -->
             <li><a href="registerForm.php">register</a></li> <!-- temp links for testing -->
