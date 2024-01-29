@@ -1,6 +1,7 @@
 <?php session_start(); ?>
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
@@ -25,7 +26,11 @@
     <meta name="theme-color" content="#8FC0A9">
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
+
 <body>
+  <div style="display: block;">
+    <?php require_once('php/conn.php') ?>
+  </div>
   <div class="navbar">
       <div class="logo">
           <a href="index.php">
@@ -92,4 +97,5 @@
   <script src="scripts/scriptRecipes.js"></script>
   <script src="scripts/nav.js"></script>
 </body>
+
 </html>
