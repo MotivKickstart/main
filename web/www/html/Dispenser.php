@@ -10,6 +10,7 @@ require_once("php/conn.php");
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Motiv | Dispenser</title>
     <link rel="stylesheet" href="/css/main.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.2/mqttws31.min.js" type="text/javascript"></script>
 </head>
 
 <body>
@@ -47,7 +48,7 @@ require_once("php/conn.php");
     </div>
     <div class="container">
         <h1 class="title title-l title-center">Dispenser</h1>
-        <button class="button button--primary" onclick="">Dispense</button>
+        <button class="button button--primary" onclick="publishDispense()">Dispense</button>
         <div class="checkboxContainer">
             <input type="checkbox" id="autoDispense" name="autoDispense" value="autoDispense">
             <label for="autoDispense">Auto Dispense</label>
@@ -70,6 +71,7 @@ require_once("php/conn.php");
 
     <script src="scripts/nav.js"></script>
     <script src="scripts/dispenser.js"></script>
+    <script src="scripts/dispensemqtt.js"></script>
 </body>
 
 </html>
