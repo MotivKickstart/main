@@ -4,7 +4,7 @@ if (isset($_POST['payLoad'])) {
     $pl = $_POST['payLoad'];
 
     // echo "test ";
-    echo $pl;
+    // echo $pl;
 
     $jsonArray = json_decode($pl, true);
     // $test = $jsonArray["ingredients"][1];

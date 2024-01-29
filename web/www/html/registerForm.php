@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (isset($_SESSION['loggedin'])) {
-    echo "<p>Hallo</p>";
+    // echo "<p>Hallo</p>";
     header('Location: index.php');
     exit;
 } ?>
@@ -71,8 +71,10 @@ if (isset($_SESSION['loggedin'])) {
         $test1 = $_SESSION['status1'];
         $test2 = $_SESSION['status2'];
         echo print_r($_SESSION['status1']);
+        unset($_SESSION['status1']);
         echo "<br>";
         echo print_r($_SESSION['status2']);
+        unset($_SESSION['status2']);
         echo "<script>console.log('$test1');</script>";
         echo "<script>console.log('$test2');</script>";
         unset($_SESSION['status']);
@@ -107,11 +109,11 @@ if (isset($_SESSION['loggedin'])) {
             </div>
             <div>
                 <label>How many times do you sport in a week?</label>
-                <input type="number" name="sport" autocomplete="off" required />
+                <input type="number" name="sportFrequency" autocomplete="off" required />
             </div>
             <div>
                 <label>How many hours do you sport in a week?</label>
-                <input type="number" name="sportHours" autocomplete="off" required />
+                <input type="number" name="sportDuration" autocomplete="off" required />
             </div>
             <input type="submit" class="button button--primary" name="registerSubmit" value="Register">
         </form>
