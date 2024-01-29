@@ -11,6 +11,7 @@ autoDispenseCheckbox.addEventListener('change', function() {
 
 function publishDispense(){
     console.log("pubdjfjg");
+    publishMessage("test");
     //e
 }
 
@@ -57,13 +58,14 @@ function startDisconnect() {
     console.log("disconnected");
     // document.getElementById("messages").innerHTML += "<span> Disconnected. </span><br>";
 }
-function publishMessage() {
-    msg = document.getElementById("Message").value;
-    topic = document.getElementById("topic_p").value;
-    Message = new Paho.MQTT.Message(msg);
+function publishMessage(message) {
+    // msg = document.getElementById("Message").value;
+    topic = "test";
+    Message = new Paho.MQTT.Message(message);
     Message.destinationName = topic;
     client.send(Message);
-    document.getElementById("messages").innerHTML += '<p style="border: 1px solid black; border-right:none; margin: 0px; display:inline; padding-bottom: 20px;"> Message to topic ' + topic + ' is sent </p><br>';
+    console.log("sending message: " + message);
+    // document.getElementById("messages").innerHTML += '<p style="border: 1px solid black; border-right:none; margin: 0px; display:inline; padding-bottom: 20px;"> Message to topic ' + topic + ' is sent </p><br>';
 }
 
 startConnect();
