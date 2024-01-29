@@ -3,13 +3,13 @@
 session_start();
 require_once('conn.php');
 
-if (!isset($_POST['username'], $_POST['password'], $_POST['phone'], $_POST['email'])) {
-    exit('Please fill both the username and password fields!');
+if (!isset($_POST['username'], $_POST['password'], $_POST['email'], $_POST['sportFrequency'], $_POST['sportDuration'])) {
+    exit('Please fill all fields!');
 }
 
 
 $errors = "";
-global $conn;
+// global $conn;
 
 if (strlen($_POST['password']) < 8) {
     $errors .= "Password too short. ";
@@ -33,22 +33,46 @@ if (!empty($errors)) {
 }
 
 if (isset($_SESSION['error'])) {
-    header('Location: ../phpregisterForm.php');
-    exit;
-} else{
-    header('Location: ../index.php');
+    header('Location: ../registerForm.php');
     exit;
 }
+// else{
+//     header('Location: ../index.php');
+//     exit;
+// }
 
-$id = 2;
+// $id = 2;
 $user = $_POST['username'];
 $pass = password_hash($_POST['password'], PASSWORD_DEFAULT);
 $phone = $_POST['phone'];
 $email = $_POST['email'];
+$freq = $_POST['sportFrequency'];
+$dur = $_POST['sportDuration'];
 
-$sql = "INSERT INTO user (role_id, username, pass, phone, email) VALUES (?, ?, ?, ?, ?)";
+$sql = "INSERT INTO user (role_id, username, pass, email, sport_frequency, sport_duration) VALUES ((SELECT id FROM role WHERE name='user'), ?, ?, ?, ?, ?)";
 $stmt = $conn->prepare($sql);
-$stmt->execute([$id, $user, $pass, $phone, $email]);
+$stmt->execute([$user, $pass, $email, $freq, $dur]);
+$_SESSION['status1'] = $stmt->errorInfo();
+$_SESSION['status2'] = $stmt->fetch();
+// echo "\nPDOStatement::errorInfo():\n";
+// $arr = $Resultsstmt->errorInfo();
+// print_r($arr);
+// echo "<br>";
+// echo $Resultsstmt->fetch();
 
-header('Location: registerForm.php');
+// $user = 'admin';
+// $pass = password_hash('password12', PASSWORD_DEFAULT);
+// $phone = '0612345678';
+// $email = 'mail@mail.com';
+
+// $sql = "INSERT INTO user (role_id, username, pass, phone, email) VALUES ((SELECT id FROM role WHERE name='admin'), ?, ?, ?, ?)";
+// $stmt = $conn->prepare($sql);
+// $stmt->execute([$user, $pass, $phone, $email]);
+// echo "\nPDOStatement::errorInfo():\n";
+// $arr = $stmt->errorInfo();
+// print_r($arr);
+// echo "<br>";
+// echo $stmt->fetch();
+
+header('Location: ../registerForm.php');
 exit;

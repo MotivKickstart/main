@@ -71,98 +71,128 @@ $conn = new PDO("mysql:host={$host};dbname={$database};charset=utf8", $user, $pa
 
 // debug_to_console($output);
 
-// $Resultsstmt = $conn->prepare("
-// CREATE TABLE role (
-//     id INT NOT NULL AUTO_INCREMENT,
-//     name VARCHAR(45) NULL,
-//     PRIMARY KEY (id),
-//     UNIQUE INDEX id_UNIQUE (id ASC));
+$Resultsstmt = $conn->prepare("
+CREATE TABLE IF NOT EXISTS role (
+    id INT NOT NULL AUTO_INCREMENT,
+    name VARCHAR(45) NULL,
+    PRIMARY KEY (id),
+    UNIQUE INDEX id_UNIQUE (id ASC));
   
-//   CREATE TABLE user (
-//     id INT NOT NULL AUTO_INCREMENT,
-//     role_id INT NULL,
-//     username VARCHAR(45) NULL,
-//     password VARCHAR(45) NULL,
-//     phone VARCHAR(45) NULL,
-//     email VARCHAR(45) NULL,
-//     weight INT NULL,
-//     PRIMARY KEY (id),
-//     UNIQUE INDEX id_UNIQUE (id ASC),
-//     UNIQUE INDEX role_id_UNIQUE (role_id ASC),
-//     CONSTRAINT role_id
-//       FOREIGN KEY (role_id)
-//       REFERENCES role (id)
-//   );
+  CREATE TABLE IF NOT EXISTS user (
+    id INT NOT NULL AUTO_INCREMENT,
+    role_id INT NULL,
+    username VARCHAR(45) NULL,
+    pass VARCHAR(255) NULL,
+    phone VARCHAR(45) NULL,
+    email VARCHAR(45) NULL,
+    weight INT NULL,
+    sport_frequency INT NULL,
+    sport_duration INT NULL,
+    PRIMARY KEY (id),
+    UNIQUE INDEX id_UNIQUE (id ASC),
+    CONSTRAINT role_id
+      FOREIGN KEY (role_id)
+      REFERENCES role (id)
+  );
   
-//   CREATE TABLE meal (
-//     id INT NOT NULL AUTO_INCREMENT,
-//     user_id INT NULL,
-//     name VARCHAR(45) NULL,
-//     calories INT NULL,
-//     fat INT NULL,
-//     protein INT NULL,
-//     weight INT NULL,
-//     date DATE NULL,
-//     time VARCHAR(45) NULL,
-//     PRIMARY KEY (id),
-//     UNIQUE INDEX id_UNIQUE (id ASC),
-//     UNIQUE INDEX user_id_UNIQUE (user_id ASC),
-//     CONSTRAINT user_id_meal
-//       FOREIGN KEY (user_id)
-//       REFERENCES user (id)
-//   );
+  CREATE TABLE IF NOT EXISTS meal (
+    id INT NOT NULL AUTO_INCREMENT,
+    user_id INT NULL,
+    name VARCHAR(45) NULL,
+    calories INT NULL,
+    fat INT NULL,
+    protein INT NULL,
+    weight INT NULL,
+    date DATE NULL,
+    time VARCHAR(45) NULL,
+    PRIMARY KEY (id),
+    UNIQUE INDEX id_UNIQUE (id ASC),
+    CONSTRAINT user_id_meal
+      FOREIGN KEY (user_id)
+      REFERENCES user (id)
+  );
   
-//   CREATE TABLE product (
-//     id INT NOT NULL AUTO_INCREMENT,
-//     user_id INT NULL,
-//     name VARCHAR(45) NULL,
-//     PRIMARY KEY (id),
-//     UNIQUE INDEX id_UNIQUE (id ASC),
-//     INDEX user_id_idx (user_id ASC),
-//     CONSTRAINT user_id_product
-//       FOREIGN KEY (user_id)
-//       REFERENCES user (id)
-//   );
+  CREATE TABLE IF NOT EXISTS product (
+    id INT NOT NULL AUTO_INCREMENT,
+    user_id INT NULL,
+    name VARCHAR(45) NULL,
+    PRIMARY KEY (id),
+    UNIQUE INDEX id_UNIQUE (id ASC),
+    INDEX user_id_idx (user_id ASC),
+    CONSTRAINT user_id_product
+      FOREIGN KEY (user_id)
+      REFERENCES user (id)
+  );
   
-//   CREATE TABLE schedule (
-//     id INT NOT NULL AUTO_INCREMENT,
-//     product_id INT NULL,
-//     name VARCHAR(45) NULL,
-//     date DATE NULL,
-//     time VARCHAR(45) NULL,
-//     PRIMARY KEY (id),
-//     UNIQUE INDEX id_UNIQUE (id ASC),
-//     UNIQUE INDEX product_id_UNIQUE (product_id ASC),
-//     CONSTRAINT product_id
-//       FOREIGN KEY (product_id)
-//       REFERENCES product (id)
-//   );
+  CREATE TABLE IF NOT EXISTS schedule (
+    id INT NOT NULL AUTO_INCREMENT,
+    product_id INT NULL,
+    name VARCHAR(45) NULL,
+    date DATE NULL,
+    time VARCHAR(45) NULL,
+    PRIMARY KEY (id),
+    UNIQUE INDEX id_UNIQUE (id ASC),
+    CONSTRAINT product_id
+      FOREIGN KEY (product_id)
+      REFERENCES product (id)
+  );
       
-//   CREATE TABLE ingredient (
-//     id INT NOT NULL AUTO_INCREMENT,
-//     meal_id INT NULL,
-//     name VARCHAR(45) NOT NULL,
-//     PRIMARY KEY (id),
-//     INDEX meal_id_ingredient_idx (meal_id ASC),
-//     CONSTRAINT meal_id_ingredient
-//       FOREIGN KEY (meal_id)
-//       REFERENCES meal (id)
-//   );
+  CREATE TABLE IF NOT EXISTS ingredient (
+    id INT NOT NULL AUTO_INCREMENT,
+    meal_id INT NULL,
+    name VARCHAR(255) NOT NULL,
+    PRIMARY KEY (id),
+    INDEX meal_id_ingredient_idx (meal_id ASC),
+    CONSTRAINT meal_id_ingredient
+      FOREIGN KEY (meal_id)
+      REFERENCES meal (id)
+  );
   
-//   CREATE TABLE powder (
-//     id INT NOT NULL AUTO_INCREMENT,
-//     schedule_id INT NULL,
-//     name VARCHAR(45) NULL,
-//     weight INT NULL,
-//     PRIMARY KEY (id),
-//     INDEX schedule_id_powder_idx (schedule_id ASC),
-//     CONSTRAINT schedule_id_powder
-//       FOREIGN KEY (schedule_id)
-//       REFERENCES schedule (id)
-//   );
+  CREATE TABLE IF NOT EXISTS powder (
+    id INT NOT NULL AUTO_INCREMENT,
+    schedule_id INT NULL,
+    name VARCHAR(45) NULL,
+    weight INT NULL,
+    PRIMARY KEY (id),
+    INDEX schedule_id_powder_idx (schedule_id ASC),
+    CONSTRAINT schedule_id_powder
+      FOREIGN KEY (schedule_id)
+      REFERENCES schedule (id)
+  );
+");
+
+// $Resultsstmt = $conn->prepare("
+// DROP TABLE role;
+// DROP TABLE user;
+// DROP TABLE meal;
+// DROP TABLE product;
+// DROP TABLE schedule;
+// DROP TABLE ingredient;
+// DROP TABLE powder;
 // ");
 
+// $Resultsstmt = $conn->prepare("
+// DROP TABLE powder;
+// DROP TABLE ingredient;
+// DROP TABLE schedule;
+// DROP TABLE product;
+// DROP TABLE meal;
+// DROP TABLE user;
+// DROP TABLE role;
+// ");
 
+// $Resultsstmt = $conn->prepare("DELETE FROM meal; DELETE FROM ingredient; ALTER TABLE meal AUTO_INCREMENT = 0; ALTER TABLE ingredient AUTO_INCREMENT = 0;");
+
+
+$Resultsstmt->execute();
+
+// echo "\nPDOStatement::errorInfo():\n";
+// $arr = $Resultsstmt->errorInfo();
+// print_r($arr);
+// echo "<br>";
+// echo $Resultsstmt->fetch();
+
+// $Resultsstmt = $conn->prepare("INSERT INTO user");
 // $Resultsstmt->execute();
 // echo "\nPDOStatement::errorInfo():\n";
 // $arr = $Resultsstmt->errorInfo();
@@ -170,13 +200,42 @@ $conn = new PDO("mysql:host={$host};dbname={$database};charset=utf8", $user, $pa
 // echo "<br>";
 // echo $Resultsstmt->fetch();
 
-$Resultsstmt = $conn->prepare("SELECT * FROM user");
-$Resultsstmt->execute();
+// $name = "user";
+
+// $sql = "INSERT INTO role (name) VALUES (?)";
+// $Resultsstmt = $conn->prepare($sql);
+// $Resultsstmt->execute([$name]);
 // echo "\nPDOStatement::errorInfo():\n";
 // $arr = $Resultsstmt->errorInfo();
 // print_r($arr);
 // echo "<br>";
-// echo $Resultsstmt->fetch();
+// echo $stmt->fetch();
+
+// $id = "SELECT id FROM role WHERE name='admin'";
+// $user = 'admin';
+// $pass = password_hash('password12', PASSWORD_DEFAULT);
+// $phone = '0612345678';
+// $email = 'mail@mail.com';
+
+// $sql = "INSERT INTO user (role_id, username, pass, phone, email) VALUES ((SELECT id FROM role WHERE name='admin'), ?, ?, ?, ?)";
+// $stmt = $conn->prepare($sql);
+// $stmt->execute([$user, $pass, $phone, $email]);
+// echo "\nPDOStatement::errorInfo():\n";
+// $arr = $stmt->errorInfo();
+// print_r($arr);
+// echo "<br>";
+// echo $stmt->fetch();
+
+$uId = $_SESSION['id'];
+$uName = $_SESSION['name'];
+// $Resultsstmt = $conn->prepare("SELECT * FROM ingredient WHERE meal_id = (SELECT id FROM meal WHERE user_id= (SELECT id FROM user WHERE username='$uName'))");
+// $Resultsstmt->execute();
+
+$Resultsstmt = $conn->prepare("SELECT * FROM user");
+$Resultsstmt->execute();
+
+// $arr = $Resultsstmt->errorInfo();
+// print_r($arr);
 
 $Results = [];
 
@@ -191,4 +250,4 @@ while ($result = $Resultsstmt->fetch(PDO::FETCH_ASSOC)) {
 //     echo "nope";
 // }
 
-// echo json_encode(['Results' => $Results], JSON_NUMERIC_CHECK);
+echo json_encode(['Results' => $Results], JSON_NUMERIC_CHECK);

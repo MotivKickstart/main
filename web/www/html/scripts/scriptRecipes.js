@@ -117,6 +117,7 @@ function saveRecipeToLocalStorage(recipe) {
 
 function saveRecipeToDatabase(recipe) {
     const savedRecipeDetails = {
+        name: recipe.label,
         ingredients: recipe.ingredients.map(ingredient => ingredient.text),
         calories: recipe.calories,
         protein: recipe.totalNutrients.PROCNT.quantity,
