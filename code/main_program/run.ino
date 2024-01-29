@@ -6,6 +6,12 @@ long run_interval = 1000;
 bool button_can_be_pressed_run = true;
 bool emergency_stop = false;
 
+void turn_off_relais(){
+  digitalWrite(water_pump, HIGH);
+  digitalWrite(creatine_pump, HIGH);
+  digitalWrite(protein_pump, HIGH);
+}
+
 // Code for rotary encoder when in run mode
 void check_press_running(){
   unsigned long current_time = millis();
@@ -111,27 +117,40 @@ void run(){
     oled.print("No");
     oled.display();
   } else if (running_option == 1){
+
+    // oled.clearDisplay();
+    // oled.setTextSize(1);
+    // oled.setTextColor(SSD1306_WHITE);
+    // print_center("Dispence from", 20);
+    // print_center("motiv app", 30);
+    // oled.display();
+    // delay(5000);
+
     if(amount_of_creatine > 0){
+      digitalWrite(creatine_pump, LOW);
       dispense("Creatine", 2, amount_of_creatine);
     } else {
       running_option++;
     }
+    turn_off_relais();
   } else if (running_option == 2){
     if(amount_of_protein > 0){
+      digitalWrite(protein_pump, LOW);
       dispense("Protein", 3, amount_of_protein);
     } else {
       running_option++;
     }
+    turn_off_relais();
   } else if (running_option == 3){
     if(amount_of_water > 0){
-      digitalWrite(12, HIGH);
-      Serial.println("HIGH");
+      digitalWrite(water_pump, LOW);
       dispense("Water", 4, amount_of_water);
     } else {
       running_option++;
     }
-    digitalWrite(12, xCZVOW");
+    turn_off_relais();
   } else if (running_option == 4){
+    turn_off_relais();
     oled.clearDisplay();
     oled.setTextSize(1);
     oled.setTextColor(SSD1306_WHITE);
@@ -141,6 +160,7 @@ void run(){
     delay(3000);
     running_option = 6;
   } else if (running_option == 5){
+    turn_off_relais();
     oled.clearDisplay();
     oled.setTextSize(1);
     oled.setTextColor(SSD1306_WHITE);
@@ -149,7 +169,6 @@ void run(){
     delay(3000);
     running_option = 6;
   } else if (running_option == 6){
-    digitalWrite(13, LOW);
     running_mode = false;
     menu_number = 0;
     running_option = 0;

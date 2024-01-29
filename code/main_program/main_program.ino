@@ -19,10 +19,13 @@
 #define DIRECTION_CW  0   // clockwise direction
 #define DIRECTION_CCW 1  // counter-clockwise direction
 
-const int LOADCELL_DOUT_PIN = 16;
-const int LOADCELL_SCK_PIN = 4;
+const int LOADCELL_DOUT_PIN = 4;
+const int LOADCELL_SCK_PIN = 16;
 
-// const int water_pump = 13;
+const int water_pump = 5;
+const int creatine_pump = 18;
+const int protein_pump = 19;
+
 
 int counter = 0;
 int direction = DIRECTION_CW;
@@ -89,9 +92,16 @@ void setup() {
   // Configure rotary encoder
   pinMode(CLK_PIN, INPUT);
   pinMode(DT_PIN, INPUT);
-  pinMode(12, OUTPUT);
   button.setDebounceTime(10);
   prev_CLK_state = digitalRead(CLK_PIN);
+  // Configure relais
+  pinMode(water_pump, OUTPUT);
+  pinMode(creatine_pump, OUTPUT);
+  pinMode(protein_pump, OUTPUT);
+
+  digitalWrite(water_pump, HIGH);
+  digitalWrite(creatine_pump, HIGH);
+  digitalWrite(protein_pump, HIGH);
 }
 
 void loop() {

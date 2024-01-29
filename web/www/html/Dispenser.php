@@ -1,12 +1,18 @@
-<?php session_start(); ?>
+<?php
+session_start();
+require_once("php/conn.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Motiv | Dispenser</title>
     <link rel="stylesheet" href="/css/main.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.2/mqttws31.min.js" type="text/javascript"></script>
 </head>
+
 <body>
     <div class="navbar">
         <div class="logo">
@@ -17,17 +23,17 @@
         <div class="menu-icon-holder">
             <?php if (isset($_SESSION['loggedin'])) { ?>
                 <a class="menu-icon menu-icon--user" href="Account.php">
-            <?php } else{ ?>
-                <a class="menu-icon menu-icon--user" href="loginForm.php">
-            <?php } ?>
-                <img src="/gfx/user.svg" alt="User">
-            </a>
+                <?php } else { ?>
+                    <a class="menu-icon menu-icon--user" href="loginForm.php">
+                    <?php } ?>
+                    <img src="/gfx/user.svg" alt="User">
+                    </a>
 
-            <div class="menu-icon" onclick="toggleMenu()">
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
-            </div>
+                    <div class="menu-icon" onclick="toggleMenu()">
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                    </div>
         </div>
         <ul class="nav-list">
             <li><a href="Dispenser.php">Dispenser</a></li>
@@ -40,17 +46,21 @@
             <?php } ?>
         </ul>
     </div>
-    <div class="container"> 
+    <div class="container">
         <h1 class="title title-l title-center">Dispenser</h1>
-        <button class="button button--primary" onclick="">Dispense</button>
+        <button class="button button--primary" onclick="publishDispense()">Dispense</button>
         <div class="checkboxContainer">
             <input type="checkbox" id="autoDispense" name="autoDispense" value="autoDispense">
             <label for="autoDispense">Auto Dispense</label>
         </div>
         <div class="alarms">
             <h2 class="title title-m">Alarms</h2>
-            <form>
+            <form method="post" action="php/dispense.php" name="register">
                 <input type="time" id="alarm" name="alarm" value="">
+                <p>Protein</p>
+                <input type="checkbox" name="protein" id="protein-button" value="protein">
+                <p>Creatine</p>
+                <input type="checkbox" name="creatine" id="creatine-button" value="creatine">
                 <input class="button button--primary" type="submit" value="Add Alarm">
             </form>
             <div class="alarmsContainer">
@@ -61,5 +71,7 @@
 
     <script src="scripts/nav.js"></script>
     <script src="scripts/dispenser.js"></script>
+    <script src="scripts/dispensemqtt.js"></script>
 </body>
+
 </html>
