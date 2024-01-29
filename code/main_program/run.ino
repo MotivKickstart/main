@@ -117,15 +117,6 @@ void run(){
     oled.print("No");
     oled.display();
   } else if (running_option == 1){
-
-    // oled.clearDisplay();
-    // oled.setTextSize(1);
-    // oled.setTextColor(SSD1306_WHITE);
-    // print_center("Dispence from", 20);
-    // print_center("motiv app", 30);
-    // oled.display();
-    // delay(5000);
-
     if(amount_of_creatine > 0){
       digitalWrite(creatine_pump, LOW);
       dispense("Creatine", 2, amount_of_creatine);

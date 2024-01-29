@@ -2,35 +2,53 @@
 #include <Adafruit_GFX.h>
 #include <Adafruit_SSD1306.h>
 #include <EEPROM.h>
+#include <WiFi.h>
+#include <PubSubClient.h>
+#include <ArduinoJson.h>
 #include "HX711.h"
 #include "soc/rtc.h"
 
+// Screen
 #define SCREEN_WIDTH 128 // OLED display width,  in pixels
 #define SCREEN_HEIGHT 64 // OLED display height, in pixels
+Adafruit_SSD1306 oled(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, -1);
+
+// Flash memory
 #define EEPROM_SIZE 1
 
-// ROTARY ENCODER
-#include <ezButton.h>  // the library to use for SW pin
+// MQTT and WI-FI
+#define SUBTOPIC "skopaTopic"
+const char* ssid = "tesla iot";
+const char* password = "fsL6HgjN";
+const char* mqtt_server = "145.24.222.129";
+const int mqtt_port = 1883;
+WiFiClient espClient;
+PubSubClient client(espClient);
 
+// Rotary encoder
+#include <ezButton.h>  // the library to use for SW pin
 #define CLK_PIN 25 // ESP32 pin GPIO25 connected to the rotary encoder's CLK pin
 #define DT_PIN  26 // ESP32 pin GPIO26 connected to the rotary encoder's DT pin
 #define SW_PIN  27 // ESP32 pin GPIO27 connected to the rotary encoder's SW pin
-
 #define DIRECTION_CW  0   // clockwise direction
 #define DIRECTION_CCW 1  // counter-clockwise direction
+int direction = DIRECTION_CW;
+int CLK_state;
+int prev_CLK_state;
+ezButton button(SW_PIN);  // create ezButton object that attach to pin 7;
 
+// Load cell
 const int LOADCELL_DOUT_PIN = 4;
 const int LOADCELL_SCK_PIN = 16;
+HX711 scale;
 
+// Dc motors
 const int water_pump = 5;
 const int creatine_pump = 18;
 const int protein_pump = 19;
 
-
+// Menu variables
 int counter = 0;
-int direction = DIRECTION_CW;
-int CLK_state;
-int prev_CLK_state;
 int menu_number = 0;
 int selected = 0;
 int amount_of_options = 5;
@@ -41,25 +59,17 @@ int calibrate_option = 0;
 int calibration_counter = 0;
 float calibration_factor = 0;
 long reading = 0;
-int known_weight = 63; //Weight of motiv bottle
+int known_weight = 63;          //Weight of motiv bottle
 // int known_weight = 100;
 
 // Running variables
 bool running_mode = false;
 int running_counter = 0;
 int running_option = 0;
-
+String text;
 int amount_of_water = 0;
 int amount_of_creatine = 0;
 int amount_of_protein = 0;
-int amount_of_preworkout = 0;
-int amount_of_flavour = 0;
-
-String text;
-HX711 scale;
-
-ezButton button(SW_PIN);  // create ezButton object that attach to pin 7;
-Adafruit_SSD1306 oled(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, -1);
 
 void startup_screen(){
   oled.clearDisplay();
@@ -98,10 +108,11 @@ void setup() {
   pinMode(water_pump, OUTPUT);
   pinMode(creatine_pump, OUTPUT);
   pinMode(protein_pump, OUTPUT);
-
+  // Set relais
   digitalWrite(water_pump, HIGH);
   digitalWrite(creatine_pump, HIGH);
   digitalWrite(protein_pump, HIGH);
+  mqtt_setup();
 }
 
 void loop() {
@@ -113,6 +124,10 @@ void loop() {
     } else {
       display_menu();
     }
+    if (!client.connected()) {
+      reconnect();
+    }
+    client.loop();
     // Serial.println(scale.get_units(1));
   } else {}
 }
