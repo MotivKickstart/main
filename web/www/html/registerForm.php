@@ -70,10 +70,10 @@ if (isset($_SESSION['loggedin'])) {
         <?php
         $test1 = $_SESSION['status1'];
         $test2 = $_SESSION['status2'];
-        echo print_r($_SESSION['status1']);
+        // echo print_r($_SESSION['status1']);
         unset($_SESSION['status1']);
         echo "<br>";
-        echo print_r($_SESSION['status2']);
+        // echo print_r($_SESSION['status2']);
         unset($_SESSION['status2']);
         echo "<script>console.log('$test1');</script>";
         echo "<script>console.log('$test2');</script>";

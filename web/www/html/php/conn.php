@@ -250,4 +250,4 @@ while ($result = $Resultsstmt->fetch(PDO::FETCH_ASSOC)) {
 //     echo "nope";
 // }
 
-echo json_encode(['Results' => $Results], JSON_NUMERIC_CHECK);
+// echo json_encode(['Results' => $Results], JSON_NUMERIC_CHECK);
