@@ -66,7 +66,10 @@
             <li><a href="registerForm.php">register</a></li> <!-- temp links for testing -->
             <?php if (isset($_SESSION['loggedin'])) { ?>
                 <li><a href="php/logout.php">Logout</a></li>
-            <?php } ?>
+            <?php } else {
+                echo "<li><a href=\"loginForm.php\">login</a></li>";
+                echo "<li><a href=\"registerForm.php\">register</a></li>";
+            } ?>
         </ul>
     </div>
 
