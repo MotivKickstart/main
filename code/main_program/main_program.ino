@@ -18,8 +18,8 @@ Adafruit_SSD1306 oled(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, -1);
 
 // MQTT and WI-FI
 #define SUBTOPIC "skopaTopic"
-const char* ssid = "tesla iot";
-const char* password = "fsL6HgjN";
+// const char* ssid = "tesla iot";
+// const char* password = "fsL6HgjN";
 const char* mqtt_server = "145.24.222.129";
 const int mqtt_port = 1883;
 WiFiClient espClient;
@@ -128,6 +128,5 @@ void loop() {
       reconnect();
     }
     client.loop();
-    // Serial.println(scale.get_units(1));
   } else {}
 }

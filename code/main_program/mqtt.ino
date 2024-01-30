@@ -45,21 +45,16 @@ void callback(char* topic, byte* payload, unsigned int length) {
   int creatine = doc["creatine"];
   int water = doc["water"];
 
-  // Voer hier logica uit op basis van de ontleden JSON-gegevens
-  Serial.println("Ontleden JSON-gegevens:");
-  Serial.print("Gebruiker: ");
-  Serial.println(user);
-  Serial.print("Product: ");
-  Serial.println(product);
-  Serial.print("Proteïne: ");
   amount_of_protein = protein;
-  Serial.println(protein);
-  Serial.print("Creatine: ");
   amount_of_creatine = creatine;
-  Serial.println(creatine);
-  Serial.print("Water: ");
   amount_of_water = water;
-  Serial.println(water);
+  oled.clearDisplay();
+  oled.setTextSize(1);
+  oled.setTextColor(SSD1306_WHITE);
+  print_center("Dispence from", 20);
+  print_center("motiv app", 30);
+  oled.display();
+  delay(2500);
   running_mode = true;
   running_option = 1;
 }
