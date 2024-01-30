@@ -28,7 +28,17 @@
             <li><a href="recipes.php">Recipes</a></li>
             <li><a href="Dispenser.php">Dispenser</a></li>
             <li><a href="About.php">About</a></li>
+<<<<<<< Updated upstream
             <li><a href="Account.php">Account</a></li>
+=======
+             <!-- temp links for testing -->
+            <?php if (isset($_SESSION['loggedin'])) { ?>
+                <li><a href="php/logout.php">Logout</a></li>
+            <?php } else {
+                    echo "<li><a href=\"loginForm.php\">login</a></li>";
+                    echo "<li><a href=\"registerForm.php\">register</a></li>";
+            }?>
+>>>>>>> Stashed changes
         </ul>
     </div>
     <?php if (isset($_SESSION['loggedin'])) {
