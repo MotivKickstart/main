@@ -78,6 +78,7 @@ function displayRecipes(recipes) {
         saveButton.textContent = 'Save';
         saveButton.addEventListener('click', () => {
             saveRecipeToLocalStorage(recipe.recipe);
+            saveRecipeToDatabase(recipe.recipe);
         });
 
         card.appendChild(title);
