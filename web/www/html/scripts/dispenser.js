@@ -17,7 +17,7 @@ function publishDispense(){
 
 function startConnect() {
     clientID = "webUser-" + parseInt(Math.random() * 100);
-    host = "localhost";
+    host = "145.24.222.129";
     port = 1884;
     userId = "jelle";
     passwordId = "password";

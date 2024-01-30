@@ -13,7 +13,21 @@ if __name__ == "__main__":
     
     # db=_mysql.connect(host="localhost",user="myuser",password="myuser",database="mydb")
     
-    conn = pyodbc.connect('DRIVER={ODBC Driver 13 for SQL Server};Server=localhost;Database=mydb;Port=3306;User ID=myuser;Password=password')
+    # driver_names = [x for x in pyodbc.drivers() if x.endswith(' for SQL Server')]
+    
+    # for x in driver_names:
+    #     print(x)
+    
+    SERVER = 'mysql'
+    DATABASE = 'mydb'
+    USERNAME = 'myuser'
+    PASSWORD = 'password'
+    
+    connectionString = f'DRIVER={{ODBC Driver 17 for SQL Server}};SERVER={SERVER};DATABASE={DATABASE};UID={USERNAME};PWD={PASSWORD}'
+    
+    conn = pyodbc.connect(connectionString)
+    
+    # conn = pyodbc.connect('DRIVER={ODBC Driver 17 for SQL Server};Server=localhost;Database=mydb;Port=3306;User ID=myuser;Password=password')
     
     cursor = conn.cursor()
     
