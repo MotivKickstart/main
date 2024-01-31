@@ -72,8 +72,8 @@
         <h2 class="title title-m">Total today</h2>
         <div id="total"></div>
     </div>
-    <script src="/scripts/scripts/main.js"></script>
-    <script src="/scripts/scripts/nav.js"></script>
+    <script src="/scripts/main.js"></script>
+    <script src="/scripts/nav.js"></script>
 </body>
 
 </html>

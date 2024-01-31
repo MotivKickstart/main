@@ -94,7 +94,7 @@ function displayTotal() {
   }
 
   const totalElement = document.getElementById('total');
-  totalElement.innerHTML = `Total calories: ${totalCalories.toFixed(2)}g<br> Total protein: ${totalProtein.toFixed(2)}g`;
+  totalElement.innerHTML = `Total calories: ${totalCalories.toFixed(2)}kcal<br> Total protein: ${totalProtein.toFixed(2)}g`;
 }
 
 displayTotal();
