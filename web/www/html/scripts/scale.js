@@ -49,7 +49,7 @@ function onConnectionLost(responseObject) {
 function onMessageArrived(message) {
     payload = message.payloadString;
     console.log("OnMessageArrived: " + payload + " Topic: " + topic);
-    document.getElementById("weight").innerHTML = " " + payload
+    document.getElementById("weight").innerHTML = " " + payload + " Kg"
     // document.getElementById("messages").innerHTML += "<span> Disconnected. </span><br>";
 }
 
