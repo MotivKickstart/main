@@ -60,7 +60,7 @@
     </div>
     <div class="container">
         <h1 class="title-l title title-center">Weight:</h1>
-        <p id="weight"></p>
+        <p id="weight">0 Kg</p>
         <button class="button button--primary">Save</button>
 
         <h2 class="title-m title">History:</h2>
