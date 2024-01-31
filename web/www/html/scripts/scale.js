@@ -1,13 +1,13 @@
-const autoDispenseCheckbox = document.querySelector('#autoDispense');
-const alarmsElement = document.querySelector('.alarms');
+// const autoDispenseCheckbox = document.querySelector('#autoDispense');
+// const alarmsElement = document.querySelector('.alarms');
 
-autoDispenseCheckbox.addEventListener('change', function() {
-    if (autoDispenseCheckbox.checked) {
-        alarmsElement.style.display = 'block';
-    } else {
-        alarmsElement.style.display = 'none';
-    }
-});
+// autoDispenseCheckbox.addEventListener('change', function() {
+//     if (autoDispenseCheckbox.checked) {
+//         alarmsElement.style.display = 'block';
+//     } else {
+//         alarmsElement.style.display = 'none';
+//     }
+// });
 
 function publishDispense(){
     console.log("pubdjfjg");
@@ -33,7 +33,7 @@ function startConnect() {
 }
 
 function onConnect() {
-    topic = "skopaTopic";
+    topic = "scaleTopic";
     console.log("Subscribing to topic " + topic);
     // document.getElementById("messages").innerHTML += "<span> Subscribing to topic " + topic + "</span><br>";
     client.subscribe(topic);
@@ -49,6 +49,8 @@ function onConnectionLost(responseObject) {
 function onMessageArrived(message) {
     payload = message.payloadString;
     console.log("OnMessageArrived: " + payload + " Topic: " + topic);
+    document.getElementById("weight").innerHTML = " " + payload
+    // document.getElementById("messages").innerHTML += "<span> Disconnected. </span><br>";
 }
 
 function startDisconnect() {
