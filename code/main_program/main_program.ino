@@ -128,6 +128,5 @@ void loop() {
       reconnect();
     }
     client.loop();
-    // Serial.println(scale.get_units(1));
   } else {}
 }
