@@ -64,14 +64,6 @@
             <li><a href="About.php">About</a></li>
             <!-- <li><a href="loginForm.php">login</a></li> temp links for testing
             <li><a href="registerForm.php">register</a></li> temp links for testing -->
-            <?php
-            if (isset($_SESSION['loggedin'])) {
-                echo "<li><a href=\"php/logout.php\">Logout</a></li>";
-            } else {
-                echo "<li><a href=\"loginForm.php\">login</a></li>";
-                echo "<li><a href=\"registerForm.php\">register</a></li>";
-            }
-            ?>
         </ul>
     </div>
 
