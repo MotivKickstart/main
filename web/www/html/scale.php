@@ -59,8 +59,17 @@
         </ul>
     </div>
     <div class="container">
-        <h1>Weight:</h1>
+        <h1 class="title-l title title-center">Weight:</h1>
         <p id="weight"></p>
+        <button class="button button--primary">Save</button>
+
+        <h2 class="title-m title">History:</h2>
+        <ul>
+            <li>84kg</li>
+            <li>84kg</li>
+            <li>85kg</li>
+            <li>84kg</li>
+        </ul>
     </div>
     <script src="scripts/nav.js"></script>
     <script src="scripts/scale.js"></script>
