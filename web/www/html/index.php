@@ -44,9 +44,8 @@
             if (isset($_SESSION['loggedin'])) {
                 echo "<a class=\"menu-icon menu-icon--user\" href=\"Account.php\">";
             } else {
-                echo "<a class=\"menu-icon menu-icon--user\" href=\"loginForm.php\">Login</a>";
+                echo "<a class=\"menu-icon menu-icon--user\" href=\"loginForm.php\"><img src=/'gfx/user.svg' alt='User'></a>";
             } ?>
-            <img src="/gfx/user.svg" alt="User">
             </a>
 
             <div class="menu-icon" onclick="toggleMenu()">
