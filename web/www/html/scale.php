@@ -60,7 +60,7 @@
     </div>
     <div class="container">
         <h1>Weight:</h1>
-        <p id="weight"></p>
+        <p id="weight">0</p>
     </div>
     <script src="scripts/nav.js"></script>
     <script src="scripts/scale.js"></script>
