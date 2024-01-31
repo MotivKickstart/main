@@ -61,14 +61,14 @@
     <div class="container">
         <h1 class="title-l title title-center">Weight:</h1>
         <p id="weight"></p>
-        <button class="button button--primary">Save</button>
+        <button class="button button--primary" onclick="saveWeight()">Save</button>
 
         <h2 class="title-m title">History:</h2>
-        <ul>
-            <li>84kg</li>
-            <li>84kg</li>
-            <li>85kg</li>
-            <li>84kg</li>
+        <ul class="history">
+            <li>84 Kg</li>
+            <li>84 Kg</li>
+            <li>85 Kg</li>
+            <li>84 Kg</li>
         </ul>
     </div>
     <script src="scripts/nav.js"></script>
