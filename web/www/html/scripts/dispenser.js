@@ -11,18 +11,16 @@ autoDispenseCheckbox.addEventListener('change', function() {
 
 function publishDispense(){
     console.log("pubdjfjg");
-    publishMessage("test");
+    publishMessage('{"user": "testUser", "product": "Skopa", "protein": 5, "creatine": 20, "water": 200}');
     //e
 }
 
 function startConnect() {
     clientID = "webUser-" + parseInt(Math.random() * 100);
-    host = "145.24.222.129";
+    host = "145.24.222.129"; // this sends the messages to the server. not to localhost
     port = 1884;
     userId = "jelle";
     passwordId = "password";
-    // document.getElementById("messages").innerHTML += "<span> Connecting to " + host + "on port " + port + "</span><br>";
-    // document.getElementById("messages").innerHTML += "<span> Using the client Id " + clientID + " </span><br>";
     client = new Paho.MQTT.Client(host, Number(port), clientID);
     client.onConnectionLost = onConnectionLost;
     client.onMessageArrived = onMessageArrived;
