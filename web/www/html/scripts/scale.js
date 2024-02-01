@@ -69,4 +69,13 @@ function publishMessage(message) {
 }
 
 startConnect();
-console.log("hi");
+
+function saveWeight() {
+    const weightElement = document.querySelector('#weight');
+    const weight = weightElement.innerHTML;
+    
+    const historyElement = document.querySelector('.history');
+    const listItem = document.createElement('li');
+    listItem.textContent = weight;
+    historyElement.appendChild(listItem);
+}

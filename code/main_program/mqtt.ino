@@ -1,5 +1,7 @@
+// Code for wifi and mqtt part
+
+// MQTT and WI-FI connfig
 void mqtt_setup(){
-  // MQTT and WI-FI connfig
   WiFi.begin(ssid, password);
   while (WiFi.status() != WL_CONNECTED) {
     delay(250);
@@ -23,22 +25,14 @@ void mqtt_setup(){
 }
 
 void callback(char* topic, byte* payload, unsigned int length) {
-  Serial.println("Nieuw MQTT-bericht ontvangen:");
-  Serial.print("Onderwerp: ");
-  Serial.println(topic);
-
-  // Ontleed het JSON-bericht
-  DynamicJsonDocument doc(1024); // Kies een geschikte grootte afhankelijk van je JSON-formaat
+  DynamicJsonDocument doc(1024);
   DeserializationError error = deserializeJson(doc, payload, length);
 
-  // Controleer op fouten tijdens het ontleden
   if (error) {
-    Serial.print("Fout tijdens het ontleden van JSON: ");
     Serial.println(error.c_str());
     return;
   }
 
-  // Haal de waarden uit het JSON-document
   const char* user = doc["user"];
   const char* product = doc["product"];
   int protein = doc["protein"];
@@ -64,7 +58,7 @@ void reconnect() {
     Serial.print("Opnieuw verbinden met MQTT-broker...");
     if (client.connect("ESP32Client")) {
       Serial.println("verbonden");
-      client.subscribe(SUBTOPIC); // Subscribe to the topic with qos 1
+      client.subscribe(SUBTOPIC);
     } else {
       Serial.print("mislukt, rc=");
       Serial.print(client.state());

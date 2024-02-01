@@ -1,4 +1,5 @@
 // Mode for calibration
+
 long previous_time = 0;
 long interval = 1000;
 bool button_can_be_pressed = true;
@@ -37,7 +38,7 @@ void check_press_calibration(){
     delay(250);
   }
 }
-// 
+
 void calibrate(){
   const char* text1;
   const char* text2;
@@ -129,5 +130,4 @@ void calibrate(){
     oled.print("Cancel");
     oled.display();
   }
-
 }

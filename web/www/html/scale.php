@@ -64,11 +64,11 @@
         <button class="button button--primary">Save</button>
 
         <h2 class="title-m title">History:</h2>
-        <ul>
-            <li>84kg</li>
-            <li>84kg</li>
-            <li>85kg</li>
-            <li>84kg</li>
+        <ul class="history">
+            <li>84 Kg</li>
+            <li>84 Kg</li>
+            <li>85 Kg</li>
+            <li>84 Kg</li>
         </ul>
     </div>
     <script src="scripts/nav.js"></script>
