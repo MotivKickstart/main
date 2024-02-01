@@ -42,38 +42,6 @@ function displaySavedMeals() {
 
         recipeContainer.appendChild(card);
     });
-  
-    // Calculate the total of all meals
-    // const totalRow = document.createElement("tr");
-  
-    // const totalLabelCell = document.createElement("td");
-    // totalLabelCell.textContent = "Total";
-    // totalRow.appendChild(totalLabelCell);
-  
-    // const emptyCell = document.createElement("td");
-    // totalRow.appendChild(emptyCell);
-  
-    // const totalCaloriesCell = document.createElement("td");
-    // const totalCalories = savedMeals.reduce((sum, meal) => sum + (typeof meal.calories === 'number' ? parseFloat(meal.calories) : 0), 0);
-    // totalCaloriesCell.textContent = totalCalories.toFixed(2);
-    // totalRow.appendChild(totalCaloriesCell);
-  
-    // const totalFatCell = document.createElement("td");
-    // const totalFat = savedMeals.reduce((sum, meal) => sum + (typeof meal.fat === 'number' ? parseFloat(meal.fat) : 0), 0);
-    // totalFatCell.textContent = totalFat.toFixed(2);
-    // totalRow.appendChild(totalFatCell);
-  
-    // const totalProteinCell = document.createElement("td");
-    // const totalProtein = savedMeals.reduce((sum, meal) => sum + (typeof meal.protein === 'number' ? parseFloat(meal.protein) : 0), 0);
-    // totalProteinCell.textContent = totalProtein.toFixed(2);
-    // totalRow.appendChild(totalProteinCell);
-  
-    // const totalWeightCell = document.createElement("td");
-    // const totalWeight = savedMeals.reduce((sum, meal) => sum + (typeof meal.weight === 'number' ? parseFloat(meal.weight) : 0), 0);
-    // totalWeightCell.textContent = totalWeight.toFixed(2);
-    // totalRow.appendChild(totalWeightCell);
-  
-    // tableBody.appendChild(totalRow);
   }
   
   function formatIngredients(ingredients) {

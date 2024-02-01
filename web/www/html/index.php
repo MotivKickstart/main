@@ -27,7 +27,7 @@
 </head>
 
 <body>
-    <div style="display: block;">
+    <div style="display: none;">
         <?php require_once('php/conn.php') ?>
     </div>
     <div class="navbar">
@@ -38,8 +38,6 @@
         </div>
 
         <div class="menu-icon-holder">
-            <!-- <a class="menu-icon menu-icon--user" href="Account.php">
-            <a class="menu-icon menu-icon--user" href="loginForm.php"> -->
             <?php
             if (isset($_SESSION['loggedin'])) {
                 echo "<a class=\"menu-icon menu-icon--user\" href=\"Account.php\">";
@@ -61,8 +59,6 @@
             <li><a href="recipes.php">Recipes</a></li>
             <li><a href="saved-meals.php">Saved Meals</a></li>
             <li><a href="About.php">About</a></li>
-            <!-- <li><a href="loginForm.php">login</a></li> temp links for testing
-            <li><a href="registerForm.php">register</a></li> temp links for testing -->
         </ul>
     </div>
 

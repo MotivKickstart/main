@@ -27,7 +27,6 @@ async function fetchRecipes() {
 }
 
 // Function to display recipes in HTML cards
-// Function to display recipes in HTML cards
 function displayRecipes(recipes) {
     const recipeContainer = document.getElementById('recipe-container');
     recipeContainer.innerHTML = ''; // Clear previous results
@@ -42,13 +41,6 @@ function displayRecipes(recipes) {
         const image = document.createElement('img');
         image.src = recipe.recipe.image;
 
-        // const ingredients = document.createElement('ul');
-        // recipe.recipe.ingredients.forEach((ingredient) => {
-        //     const li = document.createElement('li');
-        //     li.textContent = ingredient.text;
-        //     ingredients.appendChild(li);
-        // });
-
         const calories = document.createElement('p');
         calories.textContent = `Calories: ${recipe.recipe.calories.toFixed(2)}kcal`;
         calories.classList.add('label');
@@ -56,9 +48,6 @@ function displayRecipes(recipes) {
         const protein = document.createElement('p');
         protein.textContent = `Protein: ${recipe.recipe.totalNutrients.PROCNT.quantity.toFixed(2)} ${recipe.recipe.totalNutrients.PROCNT.unit}`;
         protein.classList.add('label');
-
-        // const fat = document.createElement('p');
-        // fat.textContent = `Fat: ${recipe.recipe.totalNutrients.FAT.quantity.toFixed(2)} ${recipe.recipe.totalNutrients.FAT.unit}`;
 
         //Button container
         const buttonContainer = document.createElement('div');
@@ -126,10 +115,6 @@ function saveRecipeToDatabase(recipe) {
         weight: recipe.totalWeight
     };
 
-    // console.log(JSON.stringify(savedRecipeDetails));
-
-    // let recipeData = "{\"ingredients\":", recipe.ingredients.map(ingredient => ingredient.text) ,"}"
-
     $.ajax({
         type: 'post',
         url: 'php/saveMeal.php',
@@ -138,7 +123,6 @@ function saveRecipeToDatabase(recipe) {
         },
         success: function (data) {
             console.log(data);
-            // console.log("success\n");
         }
     });
 

@@ -1,7 +1,7 @@
 const autoDispenseCheckbox = document.querySelector('#autoDispense');
 const alarmsElement = document.querySelector('.alarms');
 
-autoDispenseCheckbox.addEventListener('change', function() {
+autoDispenseCheckbox.addEventListener('change', function () {
     if (autoDispenseCheckbox.checked) {
         alarmsElement.style.display = 'block';
     } else {
@@ -9,10 +9,8 @@ autoDispenseCheckbox.addEventListener('change', function() {
     }
 });
 
-function publishDispense(){
-    console.log("pubdjfjg");
+function publishDispense() {
     publishMessage('{"user": "testUser", "product": "Skopa", "protein": 5, "creatine": 20, "water": 200}');
-    //e
 }
 
 function startConnect() {
@@ -35,12 +33,10 @@ function startConnect() {
 function onConnect() {
     topic = "skopaTopic";
     console.log("Subscribing to topic " + topic);
-    // document.getElementById("messages").innerHTML += "<span> Subscribing to topic " + topic + "</span><br>";
     client.subscribe(topic);
 }
 
 function onConnectionLost(responseObject) {
-    // document.getElementById("messages").innerHTML += "<span> ERROR: Connection is lost.</span><br>";
     if (responseObject != 0) {
         console.log("error: " + responseObject.errorMessage);
     }
@@ -54,16 +50,13 @@ function onMessageArrived(message) {
 function startDisconnect() {
     client.disconnect();
     console.log("disconnected");
-    // document.getElementById("messages").innerHTML += "<span> Disconnected. </span><br>";
 }
 function publishMessage(message) {
-    // msg = document.getElementById("Message").value;
     topic = "skopaTopic";
     Message = new Paho.MQTT.Message(message);
     Message.destinationName = topic;
     client.send(Message);
     console.log("sending message: " + message);
-    // document.getElementById("messages").innerHTML += '<p style="border: 1px solid black; border-right:none; margin: 0px; display:inline; padding-bottom: 20px;"> Message to topic ' + topic + ' is sent </p><br>';
 }
 
 startConnect();
