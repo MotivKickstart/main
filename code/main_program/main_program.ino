@@ -9,8 +9,8 @@
 #include "soc/rtc.h"
 
 // Screen
-#define SCREEN_WIDTH 128 // OLED display width,  in pixels
-#define SCREEN_HEIGHT 64 // OLED display height, in pixels
+#define SCREEN_WIDTH 128
+#define SCREEN_HEIGHT 64
 Adafruit_SSD1306 oled(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, -1);
 
 // Flash memory
@@ -60,7 +60,6 @@ int calibration_counter = 0;
 float calibration_factor = 0;
 long reading = 0;
 int known_weight = 63;          //Weight of motiv bottle
-// int known_weight = 100;
 
 // Running variables
 bool running_mode = false;

@@ -165,8 +165,4 @@ void run(){
     running_option = 0;
     running_counter = 0;
   }
-
-
-  Serial.println(running_option); 
-  // Serial.println(scale.get_units(1));
 }

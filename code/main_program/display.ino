@@ -1,12 +1,8 @@
 void check_for_input(){
   CLK_state = digitalRead(CLK_PIN);
 
-  // If the state of CLK is changed, then pulse occurred
-  // React to only the rising edge (from LOW to HIGH) to avoid double count
   if (CLK_state != prev_CLK_state && CLK_state == HIGH) {
     Serial.print("Rotary Encoder:: direction: ");
-    // if the DT state is HIGH
-    // the encoder is rotating in counter-clockwise direction => decrease the counter
     if (digitalRead(DT_PIN) == HIGH) {
       if (counter > 0){
         counter--;
@@ -20,7 +16,6 @@ void check_for_input(){
         }
       }
     } else {
-      // the encoder is rotating in clockwise direction => increase the counter
       counter++;
       Serial.print("Clockwise");
       if (menu_number == 0){
@@ -58,9 +53,6 @@ void print_center(const char *text, int hight){
   oled.println(text);
 }
 
-
-
-
 int display_page(const char* name, const char* unit, int step_size, int max){
   int display_counter = counter * step_size;
   if (display_counter > max){
@@ -81,7 +73,7 @@ int display_page(const char* name, const char* unit, int step_size, int max){
 }
 
 void display_menu(){
-  button.loop();  // MUST call the loop() function first
+  button.loop();
   check_for_input();
   
   const char *options[amount_of_options] = {
@@ -133,7 +125,4 @@ void display_menu(){
   } else if (menu_number == 5) {
     calibration_mode = true;
   } 
-
 }
-
-

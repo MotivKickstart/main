@@ -11,9 +11,9 @@
 
 #define EEPROM_SIZE 1
 
-const int known_weight = 1000;
-const int LOADCELL_DOUT_PIN = 16;
-const int LOADCELL_SCK_PIN = 4;
+const int known_weight = 84000;
+const int LOADCELL_DOUT_PIN = 4;
+const int LOADCELL_SCK_PIN = 18;
 int calibration_factor = 0;         // the current state of the output pin
 
 HX711 scale;
